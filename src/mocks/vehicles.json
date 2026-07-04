@@ -1,0 +1,108 @@
+[
+	{
+		"id": "lot-pt-001",
+		"saleId": "sale-lisbon-2026-07",
+		"lotNumber": "A-101",
+		"make": "BMW",
+		"model": "320d",
+		"derivative": "M Sport",
+		"registrationYear": 2019,
+		"registrationDate": "2019-04-18",
+		"mileage": 86500,
+		"mileageUnit": "km",
+		"fuelType": "Diesel",
+		"transmission": "Automatic",
+		"bodyType": "Sedan",
+		"colour": "Blue",
+		"countryCode": "PT",
+		"imageUrls": [
+			"https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80"
+		],
+		"currentPrice": 22800,
+		"buyNowPrice": 25400,
+		"currency": "EUR",
+		"saleStartDateTime": "2026-07-05T09:00:00Z",
+		"saleEndDateTime": "2026-07-07T18:00:00Z",
+		"specification": {
+			"doors": 4,
+			"owners": 1,
+			"serviceHistory": true,
+			"emissionsClass": "Euro 6"
+		},
+		"equipment": ["Navigation", "Parking Sensors", "Heated Seats"]
+	},
+	{
+		"id": "lot-pt-002",
+		"saleId": "sale-lisbon-2026-07",
+		"lotNumber": "A-117",
+		"make": "Volkswagen",
+		"model": "Golf",
+		"derivative": "1.5 eTSI",
+		"registrationYear": 2021,
+		"mileage": 42300,
+		"mileageUnit": "km",
+		"fuelType": "Petrol Hybrid",
+		"transmission": "Automatic",
+		"bodyType": "Hatchback",
+		"colour": "White",
+		"countryCode": "PT",
+		"imageUrls": [
+			"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80"
+		],
+		"currentPrice": 18950,
+		"currency": "EUR",
+		"saleStartDateTime": "2026-07-05T09:00:00Z",
+		"saleEndDateTime": "2026-07-07T18:00:00Z",
+		"specification": {
+			"doors": 5,
+			"navigation": true,
+			"batteryHealth": "N/A"
+		},
+		"equipment": ["Adaptive Cruise Control", "Digital Cockpit"]
+	},
+	{
+		"id": "lot-es-001",
+		"saleId": "sale-madrid-2026-08",
+		"lotNumber": "B-203",
+		"make": "Tesla",
+		"model": "Model 3",
+		"registrationYear": 2022,
+		"mileage": 30200,
+		"mileageUnit": "km",
+		"fuelType": "Electric",
+		"transmission": "Automatic",
+		"bodyType": "Sedan",
+		"colour": "Red",
+		"countryCode": "ES",
+		"imageUrls": [
+			"https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1200&q=80"
+		],
+		"currentPrice": 31900,
+		"buyNowPrice": 34450,
+		"currency": "EUR",
+		"saleStartDateTime": "2026-08-12T08:30:00Z",
+		"saleEndDateTime": "2026-08-14T17:30:00Z",
+		"specification": {
+			"rangeKm": 491,
+			"autopilot": true,
+			"accidents": 0
+		},
+		"equipment": ["Panoramic Roof", "Premium Audio"]
+	},
+	{
+		"id": "lot-gb-001",
+		"saleId": "sale-london-private-2026-09",
+		"lotNumber": "P-011",
+		"make": "Mercedes-Benz",
+		"model": "E 220",
+		"registrationYear": 2020,
+		"mileage": 61100,
+		"mileageUnit": "mi",
+		"fuelType": "Diesel",
+		"transmission": "Automatic",
+		"bodyType": "Estate",
+		"countryCode": "GB",
+		"currentPrice": 24100,
+		"currency": "GBP"
+	}
+]

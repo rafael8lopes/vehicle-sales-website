@@ -1,0 +1,52 @@
+[
+	{
+		"id": "sale-lisbon-2026-07",
+		"title": "Lisbon Summer Public Auction",
+		"description": "Public online auction with modern hatchbacks and SUVs.",
+		"saleType": "public",
+		"state": "live",
+		"startDateTime": "2026-07-05T09:00:00Z",
+		"endDateTime": "2026-07-07T18:00:00Z",
+		"countryCode": "PT",
+		"location": "Lisbon",
+		"locationType": "hybrid",
+		"lotCount": 3,
+		"heroImageUrl": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
+	},
+	{
+		"id": "sale-madrid-2026-08",
+		"title": "Madrid Public EV Collection",
+		"description": "Upcoming public event focused on electric and hybrid vehicles.",
+		"saleType": "public",
+		"state": "upcoming",
+		"startDateTime": "2026-08-12T08:30:00Z",
+		"endDateTime": "2026-08-14T17:30:00Z",
+		"countryCode": "ES",
+		"location": "Madrid",
+		"locationType": "online",
+		"lotCount": 2,
+		"heroImageUrl": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80"
+	},
+	{
+		"id": "sale-london-private-2026-09",
+		"title": "London Dealer Selection",
+		"saleType": "private",
+		"state": "upcoming",
+		"startDateTime": "2026-09-03T10:00:00Z",
+		"countryCode": "GB",
+		"location": "London",
+		"locationType": "in-person",
+		"lotCount": 2
+	},
+	{
+		"id": "sale-berlin-exclusive-2026-10",
+		"title": "Berlin Exclusive Classics",
+		"saleType": "exclusive",
+		"state": "upcoming",
+		"startDateTime": "2026-10-21T09:00:00Z",
+		"countryCode": "DE",
+		"location": "Berlin",
+		"locationType": "in-person",
+		"lotCount": 1
+	}
+]
