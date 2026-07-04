@@ -74,6 +74,12 @@ export default defineConfig([
 
 ```
 
+## Work process
+
+For brainstorm and sparring partner -> CHATGPT
+For coding -> Copilot
+UI design generation -> Figma
+
 ## Full Stack
 
 - React 19

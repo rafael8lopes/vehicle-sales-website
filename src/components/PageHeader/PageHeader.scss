@@ -1,0 +1,45 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page-header {
+  background-color: $color-hero-bg;
+  color: $color-hero-text;
+  padding: $spacing-2xl 0 $spacing-3xl;
+
+  &__inner {
+    @include container;
+    max-width: 600px;
+    margin-inline: auto;
+
+    @include respond-to(lg) {
+      max-width: $max-width;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $color-hero-subtitle;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    margin-bottom: $spacing-md;
+
+    @include respond-to(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    color: $color-hero-subtitle;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+}

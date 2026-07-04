@@ -1,11 +1,14 @@
-import './App.scss'
+import { RouterProvider } from 'react-router-dom';
+
+import { AppProviders } from '@/app/providers';
+import { router } from '@/app/router';
 
 function App() {
   return (
-    <>
-      <h1>Hello RAFA</h1>
-    </>
-  )
+    <AppProviders>
+      <RouterProvider router={router} />
+    </AppProviders>
+  );
 }
 
-export default App
+export default App;

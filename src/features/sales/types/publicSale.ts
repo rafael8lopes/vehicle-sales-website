@@ -10,6 +10,7 @@ export type PublicSale = {
   description?: string;
   saleType: SaleType;
   state: SaleState;
+  featured?: boolean;
   startDateTime: string;
   endDateTime?: string;
   countryCode: string;
@@ -17,4 +18,10 @@ export type PublicSale = {
   locationType: SaleLocationType;
   lotCount: number;
   heroImageUrl?: string;
+};
+
+export type SaleFilters = {
+  state: SaleState | 'all';
+  locationType: SaleLocationType | 'all';
+  country: string;
 };

@@ -104,6 +104,7 @@ Never duplicate server or derived state.
 
 ## Styling
 - Use SCSS with BEM.
+- Use nested BEM syntax (`&__element`, `&--modifier`) over flat selectors.
 - Keep selectors shallow.
 - Do not style by HTML tags.
 
@@ -112,11 +113,13 @@ Example naming:
 - `sale-card__title`
 - `sale-card--live`
 
-Preferred over deep nesting:
+Use nested syntax:
 ```scss
-.sale-card {}
-.sale-card__title {}
-.sale-card__price {}
+.sale-card {
+  &__title {}
+  &__price {}
+  &--live {}
+}
 ```
 
 ## Component File Structure
