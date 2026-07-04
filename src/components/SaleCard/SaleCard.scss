@@ -137,8 +137,8 @@
     padding: $spacing-sm $spacing-md;
     font-size: $font-size-sm;
     font-weight: $font-weight-semibold;
-    color: $color-text;
-    background-color: $color-background;
+    color: $color-text-contrast;
+    background-color: $color-background-primary;
     border: 1px solid $color-border;
     border-radius: $border-radius-md;
     transition: background-color 0.15s, border-color 0.15s;

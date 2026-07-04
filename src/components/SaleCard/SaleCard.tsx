@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, Gavel, Monitor, Users, Shuffle, Car } from 'lucide-react';
+import { MapPin, Calendar, Gavel, Monitor, Users, Shuffle, Car, ChevronRight } from 'lucide-react';
 import clsx from 'clsx';
 
 import type { PublicSale, SaleLocationType } from '@/features/sales/types';
@@ -101,7 +101,7 @@ export function SaleCard({ sale }: SaleCardProps) {
 						className="sale-card__cta"
 						aria-label={`View catalogue for ${sale.title}`}
 					>
-						View Catalogue &rsaquo;
+						View Catalogue <ChevronRight size={16} aria-hidden="true" />
 					</Link>
 				</div>
 			</div>

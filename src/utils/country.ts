@@ -13,7 +13,7 @@ const COUNTRY_NAMES: Record<string, string> = {
 
 const codePointToEmoji = (codePoint: number): string => String.fromCodePoint(codePoint);
 
-const REGIONAL_INDICATOR_OFFSET = 0x1f1e5;
+const REGIONAL_INDICATOR_OFFSET = 0x1f1e6;
 const ASCII_UPPERCASE_A = 65;
 
 export const getCountryFlag = (countryCode: string): string => {
