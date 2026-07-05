@@ -1,5 +1,6 @@
 import { Outlet, Link } from 'react-router-dom';
 import { Car, Clock } from 'lucide-react';
+import { useMemo } from 'react';
 
 import { formatCalendarDate } from '@/utils/formatDate';
 import { usePublicSales } from '@/features/sales/hooks/usePublicSales';
@@ -9,7 +10,10 @@ import '@/layouts/MainLayout/MainLayout.scss';
 
 export function MainLayout() {
 	const { data: sales } = usePublicSales();
-	const { live, upcoming } = sales ? groupSalesByState(sales) : { live: [], upcoming: [] };
+	const { live, upcoming } = useMemo(
+		() => (sales ? groupSalesByState(sales) : { live: [], upcoming: [] }),
+		[sales],
+	);
 
 	return (
 		<div className="main-layout">

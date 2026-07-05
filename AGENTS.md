@@ -98,7 +98,7 @@ publicSalesService.getPublicSales()
 - Server state: TanStack Query (sales, vehicles, details).
 - URL state: filters via search params (for example `?state=live`).
 - UI state: local component state (modal open, selected image, accordion state).
-- Derived state: pure functions first; `useMemo` only when justified.
+- Derived state: pure functions first; `useMemo` only for filtering/mapping possible massive datasets.
 
 Never duplicate server or derived state.
 

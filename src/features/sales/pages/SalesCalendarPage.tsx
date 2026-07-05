@@ -2,11 +2,12 @@ import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { Loading } from '@/components/Loading/Loading';
 import { ErrorState } from '@/components/ErrorState/ErrorState';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
+import { useMemo } from 'react';
 import { SalesFilters } from '@/features/sales/components/SalesFilters';
 import { SalesGroup } from '@/features/sales/components/SalesGroup';
 import { usePublicSales } from '@/features/sales/hooks/usePublicSales';
 import { useSaleFilters } from '@/features/sales/hooks/useSaleFilters';
-import { filterPublicSales, groupSalesByState } from '@/utils/filterPublicSales';
+import { filterAndGroupSales } from '@/utils/filterPublicSales';
 
 import '@/features/sales/pages/SalesCalendarPage.scss';
 
@@ -36,9 +37,11 @@ export function SalesCalendarPage() {
 		);
 	}
 
-	const filteredSales = filterPublicSales(sales, filters);
-	const { live, upcoming } = groupSalesByState(filteredSales);
-	const isEmpty = filteredSales.length === 0;
+	const { live, upcoming, total } = useMemo(
+		() => filterAndGroupSales(sales, filters),
+		[sales, filters],
+	);
+	const isEmpty = total === 0;
 
 	return (
 		<>

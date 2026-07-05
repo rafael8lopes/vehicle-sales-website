@@ -1,5 +1,6 @@
 import { Filter } from 'lucide-react';
 import clsx from 'clsx';
+import { useMemo } from 'react';
 
 import type { PublicSale, SaleFilters, SaleLocationType, SaleState } from '@/features/sales/types';
 import { getUniqueCountries } from '@/utils/filterPublicSales';
@@ -47,8 +48,8 @@ const getStateCounts = (sales: PublicSale[]): Record<string, number> => {
 };
 
 export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersProps) {
-	const stateCounts = getStateCounts(sales);
-	const countries = getUniqueCountries(sales);
+	const stateCounts = useMemo(() => getStateCounts(sales), [sales]);
+	const countries = useMemo(() => getUniqueCountries(sales), [sales]);
 
 	const handleStateChange = (state: SaleState | 'all') => {
 		onFilterChange({ ...filters, state });
