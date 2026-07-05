@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Car, Gauge, Fuel, Cog, ExternalLink } from 'lucide-react';
+import { Car, Gauge, Fuel, Cog, ChevronRight } from 'lucide-react';
 import clsx from 'clsx';
 
 import type { VehicleLot } from '@/features/vehicles/types';
@@ -93,7 +93,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 						className="vehicle-card__cta"
 						aria-label={`View details for ${vehicle.make} ${vehicle.model}`}
 					>
-						View Details <ExternalLink size={14} aria-hidden="true" />
+						View Details <ChevronRight size={16} aria-hidden="true" />
 					</Link>
 				</div>
 			</div>

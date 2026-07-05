@@ -44,6 +44,7 @@ export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
 			<Link
 				to={`/sales/${sale.id}`}
 				className="vehicle-sale-context__link"
+				aria-label={`View full catalogue for ${sale.title}`}
 			>
 				View Full Catalogue <ChevronRight size={16} aria-hidden="true" />
 			</Link>

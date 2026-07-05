@@ -7,7 +7,7 @@ yarn install
 npm run dev
 ```
 
-## Full Stack
+## Full Tech Stack
 
 - React 19
 - Vite
@@ -28,21 +28,15 @@ npm run dev
 - Husky
 - lint-staged
 
-## Work process
-
-- For brainstorm and sparring partner -> CHATGPT
-- For coding -> Copilot
-- UI design generation -> Figma
-
 ## Design Decisions
 
 ### Styling
 
 Styling follows the BEM methodology with SCSS to provide maintainable, predictable component styles while avoiding runtime styling libraries.
 
-### No use of Next.JS
+### Mock Data
 
-I Didn't used Next.js because this challenge doesn't require: server actions, no route handlers, no middleware, no auth and no server components doing database work.
+Static JSON behind a service abstraction
 
 ### Dependencies
 
