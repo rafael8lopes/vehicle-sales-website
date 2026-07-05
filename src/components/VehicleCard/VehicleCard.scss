@@ -31,14 +31,10 @@
 		width: 100%;
 		height: 100%;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: $spacing-xs;
 		color: $color-text-muted;
-		font-size: $font-size-xs;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
+		background-color: $color-background;
 	}
 
 	&__badges {

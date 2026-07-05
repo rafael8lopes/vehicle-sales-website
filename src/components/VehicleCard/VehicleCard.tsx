@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Car, Gauge, Fuel, Cog, ExternalLink } from 'lucide-react';
 import clsx from 'clsx';
@@ -13,23 +14,25 @@ type VehicleCardProps = {
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
 	const hasImage = vehicle.imageUrls && vehicle.imageUrls.length > 0;
+	const [imageError, setImageError] = useState(false);
 	const gradeClass = vehicle.grade ? `vehicle-card__grade-badge--${vehicle.grade.toLowerCase()}` : '';
+	const showPlaceholder = !hasImage || imageError;
 
 	return (
 		<article className="vehicle-card">
 			<div className="vehicle-card__image-wrapper">
-				{hasImage ? (
+				{showPlaceholder ? (
+					<div className="vehicle-card__image-placeholder" aria-hidden="true">
+						<Car size={48} strokeWidth={1} />
+					</div>
+				) : (
 					<img
 						className="vehicle-card__image"
 						src={vehicle.imageUrls![0]}
 						alt={`${vehicle.make} ${vehicle.model}`}
 						loading="lazy"
+						onError={() => setImageError(true)}
 					/>
-				) : (
-					<div className="vehicle-card__image-placeholder" aria-hidden="true">
-						<Car size={32} strokeWidth={1} />
-						<span>No image</span>
-					</div>
 				)}
 
 				<div className="vehicle-card__badges">

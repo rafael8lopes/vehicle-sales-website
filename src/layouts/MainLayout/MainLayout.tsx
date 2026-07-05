@@ -20,7 +20,6 @@ export function MainLayout() {
 			<nav className="main-layout__nav" aria-label="Main navigation">
 				<div className="main-layout__nav-inner">
 					<Link to="/" className="main-layout__logo" aria-label="AutoAuction home">
-						<Car size={20} aria-hidden="true" />
 						<span className="main-layout__logo-text">AutoAuction</span>
 					</Link>
 
