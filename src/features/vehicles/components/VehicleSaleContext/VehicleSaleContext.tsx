@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Diamond, Calendar, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, ChevronRight } from 'lucide-react';
 
 import type { PublicSale } from '@/features/sales/types';
 import { getCountryFlag, getCountryName } from '@/utils/country';
 import { formatSaleDateRange } from '@/utils/formatDate';
+import { getLocationTypeLabel, getLocationTypeIcon } from '@/utils/locationType';
 
 import '@/features/vehicles/components/VehicleSaleContext/VehicleSaleContext.scss';
 
@@ -12,6 +13,7 @@ type VehicleSaleContextProps = {
 };
 
 export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
+	const LocationIcon = getLocationTypeIcon(sale.locationType);
 	const flag = getCountryFlag(sale.countryCode);
 	const locationLabel = sale.location
 		? `${flag} ${sale.location}`
@@ -30,8 +32,8 @@ export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
 					<span>{locationLabel}</span>
 				</div>
 				<div className="vehicle-sale-context__detail">
-					<Diamond size={14} aria-hidden="true" />
-					<span>{sale.locationType === 'in-person' ? 'In Person' : sale.locationType === 'hybrid' ? 'Hybrid' : 'Online'}</span>
+					<LocationIcon size={14} aria-hidden="true" />
+					<span>{getLocationTypeLabel(sale.locationType)}</span>
 				</div>
 				<div className="vehicle-sale-context__detail">
 					<Calendar size={14} aria-hidden="true" />

@@ -11,6 +11,8 @@
 	&__table {
 		width: 100%;
 		border-collapse: collapse;
+		background-color: $color-surface;
+		border-radius: $border-radius-md;
 	}
 
 	&__row {
@@ -18,7 +20,7 @@
 	}
 
 	&__label {
-		padding: $spacing-sm 0;
+		padding: $spacing-sm $spacing-md;
 		font-size: $font-size-sm;
 		font-weight: $font-weight-regular;
 		color: $color-text-secondary;
@@ -27,7 +29,7 @@
 	}
 
 	&__value {
-		padding: $spacing-sm 0;
+		padding: $spacing-sm $spacing-md;
 		font-size: $font-size-sm;
 		font-weight: $font-weight-medium;
 		color: $color-text;

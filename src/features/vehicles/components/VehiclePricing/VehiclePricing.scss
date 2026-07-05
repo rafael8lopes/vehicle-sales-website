@@ -2,7 +2,7 @@
 @use '../../../../styles/mixins' as *;
 
 .vehicle-pricing {
-	background-color: $color-background;
+	background-color: $color-background-secondary;
 	border: 1px solid $color-border-light;
 	border-radius: $border-radius-md;
 	padding: $spacing-lg;
