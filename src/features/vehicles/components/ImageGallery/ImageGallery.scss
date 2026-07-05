@@ -1,0 +1,114 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.image-gallery {
+	&__main {
+		position: relative;
+		border-radius: $border-radius-md;
+		overflow: hidden;
+		background-color: darken($color-background, 3%);
+		aspect-ratio: 4 / 3;
+
+		@include respond-to(md) {
+			aspect-ratio: 16 / 10;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	&__placeholder {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: darken($color-background, 3%);
+		color: $color-text-muted;
+		border-radius: $border-radius-md;
+
+		@include respond-to(md) {
+			aspect-ratio: 16 / 10;
+		}
+	}
+
+	&__nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 36px;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(255, 255, 255, 0.9);
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+		color: $color-text;
+		box-shadow: $shadow-card;
+		transition: background-color 0.15s;
+
+		&:hover {
+			background-color: $color-surface;
+		}
+
+		&--prev {
+			left: $spacing-sm;
+		}
+
+		&--next {
+			right: $spacing-sm;
+		}
+	}
+
+	&__counter {
+		position: absolute;
+		bottom: $spacing-sm;
+		right: $spacing-sm;
+		background-color: rgba(0, 0, 0, 0.6);
+		color: white;
+		font-size: $font-size-xs;
+		padding: 2px $spacing-sm;
+		border-radius: $border-radius-sm;
+	}
+
+	&__thumbnails {
+		display: flex;
+		gap: $spacing-sm;
+		margin-top: $spacing-sm;
+		overflow-x: auto;
+	}
+
+	&__thumbnail {
+		flex-shrink: 0;
+		width: 56px;
+		height: 56px;
+		border-radius: $border-radius-sm;
+		overflow: hidden;
+		cursor: pointer;
+		border: 2px solid transparent;
+		padding: 0;
+		background-color: darken($color-background, 3%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $color-text-muted;
+		transition: border-color 0.15s;
+
+		&--active {
+			border-color: $color-primary;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,60 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.vehicle-pricing {
+	background-color: $color-background;
+	border: 1px solid $color-border-light;
+	border-radius: $border-radius-md;
+	padding: $spacing-lg;
+
+	&__block {
+		margin-bottom: $spacing-md;
+
+		&--buy-now {
+			padding-top: $spacing-sm;
+			border-top: 1px solid $color-border-light;
+		}
+	}
+
+	&__label {
+		display: block;
+		font-size: $font-size-xs;
+		font-weight: $font-weight-semibold;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $color-text-secondary;
+		margin-bottom: $spacing-xs;
+	}
+
+	&__amount {
+		display: flex;
+		align-items: center;
+		gap: $spacing-xs;
+		font-size: $font-size-xl;
+		font-weight: $font-weight-bold;
+		color: $color-text;
+
+		&--buy-now {
+			color: $color-accent;
+
+			svg {
+				color: $color-accent;
+			}
+		}
+	}
+
+	&__currency {
+		font-size: $font-size-sm;
+		font-weight: $font-weight-regular;
+		color: $color-text-secondary;
+		margin-left: $spacing-xs;
+	}
+
+	&__disclaimer {
+		font-size: $font-size-xs;
+		color: $color-text-muted;
+		margin-top: $spacing-md;
+		padding-top: $spacing-sm;
+		border-top: 1px solid $color-border-light;
+	}
+}

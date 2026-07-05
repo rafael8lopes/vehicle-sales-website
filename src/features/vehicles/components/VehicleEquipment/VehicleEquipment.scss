@@ -1,0 +1,36 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.vehicle-equipment {
+	&__title {
+		font-size: $font-size-md;
+		font-weight: $font-weight-bold;
+		margin-bottom: $spacing-md;
+	}
+
+	&__list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: $spacing-sm;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		@include respond-to(sm) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: $spacing-sm;
+		font-size: $font-size-sm;
+		color: $color-text;
+
+		svg {
+			flex-shrink: 0;
+			color: $color-accent;
+		}
+	}
+}

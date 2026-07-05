@@ -1,0 +1,36 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.vehicle-spec-table {
+	&__title {
+		font-size: $font-size-md;
+		font-weight: $font-weight-bold;
+		margin-bottom: $spacing-md;
+	}
+
+	&__table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	&__row {
+		border-bottom: 1px solid $color-border-light;
+	}
+
+	&__label {
+		padding: $spacing-sm 0;
+		font-size: $font-size-sm;
+		font-weight: $font-weight-regular;
+		color: $color-text-secondary;
+		text-align: left;
+		white-space: nowrap;
+	}
+
+	&__value {
+		padding: $spacing-sm 0;
+		font-size: $font-size-sm;
+		font-weight: $font-weight-medium;
+		color: $color-text;
+		text-align: right;
+	}
+}
