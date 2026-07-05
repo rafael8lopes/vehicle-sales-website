@@ -2,6 +2,8 @@ export type VehicleMileageUnit = 'km' | 'mi';
 
 export type VehicleSpecificationValue = string | number | boolean | null;
 
+export type VehicleGrade = 'A' | 'B' | 'C' | 'D';
+
 export type VehicleLot = {
   id: string;
   saleId: string;
@@ -19,6 +21,8 @@ export type VehicleLot = {
   colour?: string;
   countryCode?: string;
   imageUrls?: string[];
+  grade?: VehicleGrade;
+  conditionNotes?: string;
   currentPrice?: number;
   buyNowPrice?: number;
   currency?: string;

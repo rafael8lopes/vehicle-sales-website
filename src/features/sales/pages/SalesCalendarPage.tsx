@@ -15,6 +15,12 @@ export function SalesCalendarPage() {
 	const { data: sales, isLoading, isError, refetch } = usePublicSales();
 	const { filters, setFilters } = useSaleFilters();
 
+	const { live, upcoming, total } = useMemo(
+		() => filterAndGroupSales(sales ?? [], filters),
+		[sales, filters],
+	);
+	const isEmpty = total === 0;
+
 	if (isLoading) {
 		return (
 			<>
@@ -36,12 +42,6 @@ export function SalesCalendarPage() {
 			</>
 		);
 	}
-
-	const { live, upcoming, total } = useMemo(
-		() => filterAndGroupSales(sales, filters),
-		[sales, filters],
-	);
-	const isEmpty = total === 0;
 
 	return (
 		<>

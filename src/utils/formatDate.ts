@@ -30,6 +30,10 @@ export const formatSaleDateRange = (
 	return `${format(startDate, 'd MMM')} — ${format(endDate, 'd MMM yyyy')}`;
 };
 
+export const formatFullSaleDate = (dateString: string): string => {
+	return format(parseISO(dateString), 'd MMMM yyyy');
+};
+
 export const formatCalendarDate = (date: Date = new Date()): string => {
 	return format(date, 'd MMM yyyy');
 };

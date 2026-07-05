@@ -1,0 +1,142 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.sale-header {
+	background-color: $color-hero-bg;
+	color: $color-hero-text;
+	padding: $spacing-lg 0 $spacing-2xl;
+
+	&__inner {
+		@include container;
+	}
+
+	&__back {
+		display: inline-flex;
+		align-items: center;
+		gap: $spacing-xs;
+		font-size: $font-size-sm;
+		color: $color-hero-subtitle;
+		margin-bottom: $spacing-lg;
+		transition: color 0.15s;
+
+		&:hover {
+			color: $color-hero-text;
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: $spacing-xl;
+
+		@include respond-to(lg) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+	}
+
+	&__main {
+		flex: 1;
+		max-width: 600px;
+	}
+
+	&__badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		padding: 4px 12px;
+		font-size: $font-size-xs;
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		border-radius: $border-radius-sm;
+		margin-bottom: $spacing-md;
+
+		&--live {
+			background-color: $color-live;
+			color: white;
+		}
+
+		&--upcoming {
+			background-color: $color-upcoming;
+			color: white;
+		}
+	}
+
+	&__badge-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: white;
+		animation: sale-header-pulse 1.5s ease-in-out infinite;
+	}
+
+	&__title {
+		font-size: $font-size-2xl;
+		font-weight: $font-weight-bold;
+		line-height: 1.2;
+		margin-bottom: $spacing-md;
+
+		@include respond-to(md) {
+			font-size: $font-size-3xl;
+		}
+	}
+
+	&__description {
+		font-size: $font-size-base;
+		color: $color-hero-subtitle;
+		line-height: 1.6;
+		max-width: 500px;
+	}
+
+	&__info-card {
+		background-color: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: $border-radius-lg;
+		padding: $spacing-lg;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: $spacing-lg;
+		min-width: 280px;
+
+		@include respond-to(lg) {
+			min-width: 320px;
+		}
+	}
+
+	&__info-label {
+		display: block;
+		font-size: $font-size-xs;
+		font-weight: $font-weight-semibold;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: $color-hero-subtitle;
+		margin-bottom: $spacing-xs;
+	}
+
+	&__info-value {
+		display: flex;
+		align-items: center;
+		gap: $spacing-xs;
+		font-size: $font-size-sm;
+		font-weight: $font-weight-semibold;
+
+		&--large {
+			font-size: $font-size-xl;
+			font-weight: $font-weight-bold;
+		}
+	}
+
+	&__info-sublabel {
+		display: block;
+		font-size: $font-size-xs;
+		color: $color-hero-subtitle;
+		margin-top: 2px;
+	}
+}
+
+@keyframes sale-header-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.4; }
+}

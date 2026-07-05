@@ -1,0 +1,104 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: $spacing-md;
+	padding: $spacing-xl 0;
+	border-top: 1px solid $color-border-light;
+	margin-top: $spacing-xl;
+
+	&__summary {
+		font-size: $font-size-sm;
+		color: $color-text-secondary;
+	}
+
+	&__controls {
+		display: flex;
+		align-items: center;
+		gap: $spacing-lg;
+	}
+
+	&__page-size {
+		display: flex;
+		align-items: center;
+		gap: $spacing-sm;
+		font-size: $font-size-sm;
+		color: $color-text-secondary;
+
+		select {
+			padding: $spacing-xs $spacing-lg $spacing-xs $spacing-sm;
+			border: 1px solid $color-border;
+			border-radius: $border-radius-sm;
+			font-size: $font-size-sm;
+			background-color: $color-surface;
+			cursor: pointer;
+			appearance: auto;
+		}
+	}
+
+	&__pages {
+		display: flex;
+		align-items: center;
+		gap: 2px;
+	}
+
+	&__nav {
+		min-width: 32px;
+		height: 32px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: $border-radius-sm;
+		color: $color-text;
+		transition: background-color 0.15s;
+
+		&:hover:not(:disabled) {
+			background-color: $color-background;
+		}
+
+		&:disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+		}
+	}
+
+	&__page {
+		min-width: 32px;
+		height: 32px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: $border-radius-sm;
+		font-size: $font-size-sm;
+		color: $color-text;
+		transition: background-color 0.15s;
+
+		&:hover:not(:disabled) {
+			background-color: $color-background;
+		}
+
+		&--active {
+			background-color: $color-primary;
+			color: $color-text-contrast;
+			font-weight: $font-weight-semibold;
+
+			&:hover:not(:disabled) {
+				background-color: $color-primary;
+			}
+		}
+	}
+
+	&__ellipsis {
+		min-width: 32px;
+		height: 32px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: $font-size-sm;
+		color: $color-text-muted;
+	}
+}

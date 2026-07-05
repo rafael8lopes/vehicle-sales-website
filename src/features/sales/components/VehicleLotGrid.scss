@@ -1,0 +1,16 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.vehicle-lot-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: $spacing-lg;
+
+	@include respond-to(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include respond-to(lg) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
