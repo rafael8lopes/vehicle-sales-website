@@ -1,0 +1,93 @@
+{
+	"sales": [
+		{
+			"id": "sale-london-journey-2026-07",
+			"title": "Prestige & Classic Motor Cars",
+			"description": "Focused fixture sale for the calendar to VDP journey.",
+			"saleType": "public",
+			"state": "live",
+			"featured": true,
+			"startDateTime": "2026-07-04T09:00:00Z",
+			"endDateTime": "2026-07-04T18:00:00Z",
+			"countryCode": "GB",
+			"location": "London, United Kingdom",
+			"locationType": "hybrid",
+			"lotCount": 2
+		},
+		{
+			"id": "sale-berlin-journey-2026-07",
+			"title": "Berlin EV Showcase",
+			"description": "Secondary sale to ensure filter interaction changes the result set.",
+			"saleType": "public",
+			"state": "upcoming",
+			"startDateTime": "2026-07-12T10:00:00Z",
+			"endDateTime": "2026-07-12T18:00:00Z",
+			"countryCode": "DE",
+			"location": "Berlin, Germany",
+			"locationType": "online",
+			"lotCount": 1
+		}
+	],
+	"vehicles": [
+		{
+			"id": "lot-gb-journey-001",
+			"saleId": "sale-london-journey-2026-07",
+			"lotNumber": "1",
+			"make": "Aston Martin",
+			"model": "DB5",
+			"derivative": "Vantage",
+			"registrationYear": 1964,
+			"mileage": 48200,
+			"mileageUnit": "mi",
+			"fuelType": "Petrol",
+			"transmission": "Manual",
+			"bodyType": "Coupe",
+			"colour": "Silver Birch",
+			"countryCode": "GB",
+			"grade": "A",
+			"conditionNotes": "Fully restored to concours standard.",
+			"currentPrice": 485000,
+			"currency": "GBP"
+		},
+		{
+			"id": "lot-gb-journey-002",
+			"saleId": "sale-london-journey-2026-07",
+			"lotNumber": "2",
+			"make": "Jaguar",
+			"model": "E-Type",
+			"derivative": "Series 1",
+			"registrationYear": 1962,
+			"mileage": 31500,
+			"mileageUnit": "mi",
+			"fuelType": "Petrol",
+			"transmission": "Manual",
+			"bodyType": "Convertible",
+			"colour": "British Racing Green",
+			"countryCode": "GB",
+			"grade": "A",
+			"conditionNotes": "Presented in excellent condition.",
+			"currentPrice": 295000,
+			"currency": "GBP"
+		},
+		{
+			"id": "lot-de-journey-001",
+			"saleId": "sale-berlin-journey-2026-07",
+			"lotNumber": "12",
+			"make": "Tesla",
+			"model": "Model 3",
+			"registrationYear": 2022,
+			"mileage": 30200,
+			"mileageUnit": "km",
+			"fuelType": "Electric",
+			"transmission": "Automatic",
+			"bodyType": "Sedan",
+			"colour": "Red",
+			"countryCode": "DE",
+			"grade": "A",
+			"conditionNotes": "Immaculate condition.",
+			"currentPrice": 31900,
+			"currency": "EUR"
+		}
+	],
+	"latencyMs": 0
+}

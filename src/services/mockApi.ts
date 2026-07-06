@@ -5,14 +5,40 @@ import vehiclesData from '@/mocks/vehicles.json';
 
 const DEFAULT_LATENCY_MS = 200;
 
+type RuntimeMockData = {
+	sales?: PublicSale[];
+	vehicles?: VehicleLot[];
+	latencyMs?: number;
+};
+
 const sales = salesData as PublicSale[];
 const vehicles = vehiclesData as VehicleLot[];
+
+const getRuntimeMockData = (): RuntimeMockData | null => {
+	if (typeof window === 'undefined') {
+		return null;
+	}
+
+	return (window as Window & { __E2E_MOCK_DATA__?: RuntimeMockData }).__E2E_MOCK_DATA__ ?? null;
+};
+
+const getSalesData = (): PublicSale[] => {
+	return getRuntimeMockData()?.sales ?? sales;
+};
+
+const getVehiclesData = (): VehicleLot[] => {
+	return getRuntimeMockData()?.vehicles ?? vehicles;
+};
+
+const getLatencyMs = (): number => {
+	return getRuntimeMockData()?.latencyMs ?? DEFAULT_LATENCY_MS;
+};
 
 const cloneData = <T>(value: T): T => {
 	return JSON.parse(JSON.stringify(value)) as T;
 };
 
-const withLatency = <T>(value: T, latencyMs = DEFAULT_LATENCY_MS): Promise<T> => {
+const withLatency = <T>(value: T, latencyMs = getLatencyMs()): Promise<T> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(cloneData(value));
@@ -22,15 +48,15 @@ const withLatency = <T>(value: T, latencyMs = DEFAULT_LATENCY_MS): Promise<T> =>
 
 export const mockApi = {
 	getSales: async (): Promise<PublicSale[]> => {
-		return withLatency(sales);
+		return withLatency(getSalesData());
 	},
 	getSaleById: async (saleId: string): Promise<PublicSale | undefined> => {
-		return withLatency(sales.find((sale) => sale.id === saleId));
+		return withLatency(getSalesData().find((sale) => sale.id === saleId));
 	},
 	getVehicles: async (): Promise<VehicleLot[]> => {
-		return withLatency(vehicles);
+		return withLatency(getVehiclesData());
 	},
 	getVehicleById: async (vehicleId: string): Promise<VehicleLot | undefined> => {
-		return withLatency(vehicles.find((vehicle) => vehicle.id === vehicleId));
+		return withLatency(getVehiclesData().find((vehicle) => vehicle.id === vehicleId));
 	},
 };
