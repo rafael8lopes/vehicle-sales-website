@@ -1,7 +1,11 @@
 import type { VehicleMileageUnit } from '@/features/vehicles/types';
 
-export const formatMileage = (mileage: number, unit: VehicleMileageUnit = 'km'): string => {
-	const formatted = new Intl.NumberFormat('en-GB').format(mileage);
+export const formatMileage = (
+	mileage: number,
+	unit: VehicleMileageUnit = 'km',
+	locale: string = 'en-GB',
+): string => {
+	const formatted = new Intl.NumberFormat(locale).format(mileage);
 
 	return `${formatted} ${unit}`;
 };

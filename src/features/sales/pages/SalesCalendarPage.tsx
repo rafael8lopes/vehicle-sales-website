@@ -2,11 +2,13 @@ import { PageHeader } from '@/components/PageHeader/PageHeader';
 import { Loading } from '@/components/Loading/Loading';
 import { ErrorState } from '@/components/ErrorState/ErrorState';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
+import { Pagination } from '@/components/Pagination/Pagination';
 import { useMemo } from 'react';
 import { SalesFilters } from '@/features/sales/components/SalesFilters';
 import { SalesGroup } from '@/features/sales/components/SalesGroup';
 import { usePublicSales } from '@/features/sales/hooks/usePublicSales';
 import { useSaleFilters } from '@/features/sales/hooks/useSaleFilters';
+import { usePagination } from '@/hooks/usePagination';
 import { filterAndGroupSales } from '@/utils/filterPublicSales';
 
 import '@/features/sales/pages/SalesCalendarPage.scss';
@@ -19,7 +21,35 @@ export function SalesCalendarPage() {
 		() => filterAndGroupSales(sales ?? [], filters),
 		[sales, filters],
 	);
+
+	const {
+		page,
+		pageSize,
+		totalPages,
+		startIndex,
+		endIndex,
+		setPage,
+		setPageSize,
+	} = usePagination({ totalItems: total });
+
+	const paginatedSales = useMemo(
+		() => [...live, ...upcoming].slice(startIndex, endIndex),
+		[live, upcoming, startIndex, endIndex],
+	);
+	const paginatedLive = useMemo(
+		() => paginatedSales.filter((sale) => sale.state === 'live'),
+		[paginatedSales],
+	);
+	const paginatedUpcoming = useMemo(
+		() => paginatedSales.filter((sale) => sale.state === 'upcoming'),
+		[paginatedSales],
+	);
 	const isEmpty = total === 0;
+
+	const handleFilterChange: typeof setFilters = (nextFilters) => {
+		setFilters(nextFilters);
+		setPage(1);
+	};
 
 	if (isLoading) {
 		return (
@@ -49,7 +79,7 @@ export function SalesCalendarPage() {
 			<SalesFilters
 				filters={filters}
 				sales={sales}
-				onFilterChange={setFilters}
+				onFilterChange={handleFilterChange}
 			/>
 
 			<div className="sales-calendar">
@@ -63,15 +93,23 @@ export function SalesCalendarPage() {
 						<>
 							<SalesGroup
 								title="Happening Now"
-								count={live.length}
-								sales={live}
+								count={paginatedLive.length}
+								sales={paginatedLive}
 								variant="live"
 							/>
 							<SalesGroup
 								title="Upcoming Sales"
-								count={upcoming.length}
-								sales={upcoming}
+								count={paginatedUpcoming.length}
+								sales={paginatedUpcoming}
 								variant="upcoming"
+							/>
+							<Pagination
+								page={page}
+								pageSize={pageSize}
+								totalItems={total}
+								totalPages={totalPages}
+								onPageChange={setPage}
+								onPageSizeChange={setPageSize}
 							/>
 						</>
 					)}

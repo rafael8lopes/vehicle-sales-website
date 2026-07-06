@@ -10,4 +10,8 @@ describe('formatPrice', () => {
   it('formats with provided currency', () => {
     expect(formatPrice(9999, 'EUR')).toBe('€9,999');
   });
+
+  it('formats using provided locale', () => {
+    expect(formatPrice(123456, 'EUR', 'de-DE')).toBe('123.456\u00a0€');
+  });
 });
