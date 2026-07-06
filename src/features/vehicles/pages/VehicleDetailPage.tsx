@@ -11,6 +11,7 @@ import { VehicleEquipment } from '@/features/vehicles/components/VehicleEquipmen
 import { VehicleSaleContext } from '@/features/vehicles/components/VehicleSaleContext/VehicleSaleContext';
 import { useVehicleLot } from '@/features/vehicles/hooks/useVehicleLot';
 import { useVehicleSale } from '@/features/vehicles/hooks/useVehicleSale';
+import { useSeo } from '@/app/useSeo';
 
 import '@/features/vehicles/pages/VehicleDetailPage.scss';
 
@@ -28,6 +29,15 @@ export function VehicleDetailPage() {
 	} = useVehicleSale(vehicle?.saleId);
 
 	const isLoading = vehicleLoading || (vehicle && saleLoading);
+
+	useSeo({
+		title: vehicle ? `${vehicle.make} ${vehicle.model}` : 'Vehicle Details',
+		description: vehicle
+			? `View lot ${vehicle.lotNumber}, pricing, specifications, and sale context for ${vehicle.make} ${vehicle.model}.`
+			: 'View detailed lot specifications, pricing, and sale context for this vehicle.',
+		canonicalPath: vehicleId ? `/vehicles/${vehicleId}` : '/vehicles',
+		noIndex: !vehicle && !isLoading && !vehicleError,
+	});
 
 	if (isLoading) {
 		return <Loading message="Loading vehicle details…" />;

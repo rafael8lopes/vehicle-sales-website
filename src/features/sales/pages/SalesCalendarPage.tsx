@@ -10,10 +10,18 @@ import { usePublicSales } from '@/features/sales/hooks/usePublicSales';
 import { useSaleFilters } from '@/features/sales/hooks/useSaleFilters';
 import { usePagination } from '@/hooks/usePagination';
 import { filterAndGroupSales } from '@/utils/filterPublicSales';
+import { useSeo } from '@/app/useSeo';
 
 import '@/features/sales/pages/SalesCalendarPage.scss';
 
 export function SalesCalendarPage() {
+	useSeo({
+		title: 'Public Sales Calendar',
+		description:
+			'Browse live and upcoming public vehicle auctions and filter by status, format, and country.',
+		canonicalPath: '/',
+	});
+
 	const { data: sales, isLoading, isError, refetch } = usePublicSales();
 	const { filters, setFilters } = useSaleFilters();
 

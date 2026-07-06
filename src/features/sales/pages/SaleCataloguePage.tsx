@@ -11,6 +11,7 @@ import { usePublicSale } from '@/features/sales/hooks/usePublicSale';
 import { useSaleVehicleLots } from '@/features/sales/hooks/useSaleVehicleLots';
 import { usePagination } from '@/hooks/usePagination';
 import { formatSaleDateRange } from '@/utils/formatDate';
+import { useSeo } from '@/app/useSeo';
 
 import '@/features/sales/pages/SaleCataloguePage.scss';
 
@@ -35,6 +36,15 @@ export function SaleCataloguePage() {
 	const paginatedVehicles = vehicles.slice(startIndex, endIndex);
 	const isLoading = saleLoading || vehiclesLoading;
 	const isError = saleError || vehiclesError;
+
+	// useSeo({
+	// 	title: sale ? `${sale.title} Catalogue` : 'Sale Catalogue',
+	// 	description: sale
+	// 		? `Explore ${sale.title} lots, dates, and listing details in the public sale catalogue.`
+	// 		: 'Explore vehicle lots and details in this public sale catalogue.',
+	// 	canonicalPath: saleId ? `/sales/${saleId}` : '/sales',
+	// 	noIndex: !sale && !isLoading && !isError,
+	// });
 
 	if (isLoading) {
 		return <Loading message="Loading catalogue…" />;
