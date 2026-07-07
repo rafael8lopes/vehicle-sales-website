@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, ChevronRight } from 'lucide-react';
 
+import { LocationTypeIcon } from '@/components/LocationTypeIcon/LocationTypeIcon';
 import type { PublicSale } from '@/features/sales/types';
 import { getCountryFlag, getCountryName } from '@/utils/country';
 import { formatSaleDateRange } from '@/utils/formatDate';
-import { getLocationTypeLabel, getLocationTypeIcon } from '@/utils/locationType';
+import { getLocationTypeLabel } from '@/utils/locationType';
 
 import '@/features/vehicles/components/VehicleSaleContext/VehicleSaleContext.scss';
 
@@ -13,7 +14,6 @@ type VehicleSaleContextProps = {
 };
 
 export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
-	const LocationIcon = getLocationTypeIcon(sale.locationType);
 	const flag = getCountryFlag(sale.countryCode);
 	const locationLabel = sale.location
 		? `${flag} ${sale.location}`
@@ -32,7 +32,7 @@ export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
 					<span>{locationLabel}</span>
 				</div>
 				<div className="vehicle-sale-context__detail">
-					<LocationIcon size={14} aria-hidden="true" />
+					<LocationTypeIcon locationType={sale.locationType} size={14} aria-hidden="true" />
 					<span>{getLocationTypeLabel(sale.locationType)}</span>
 				</div>
 				<div className="vehicle-sale-context__detail">

@@ -37,14 +37,14 @@ export function SaleCataloguePage() {
 	const isLoading = saleLoading || vehiclesLoading;
 	const isError = saleError || vehiclesError;
 
-	// useSeo({
-	// 	title: sale ? `${sale.title} Catalogue` : 'Sale Catalogue',
-	// 	description: sale
-	// 		? `Explore ${sale.title} lots, dates, and listing details in the public sale catalogue.`
-	// 		: 'Explore vehicle lots and details in this public sale catalogue.',
-	// 	canonicalPath: saleId ? `/sales/${saleId}` : '/sales',
-	// 	noIndex: !sale && !isLoading && !isError,
-	// });
+	useSeo({
+		title: sale ? `${sale.title} Catalogue` : 'Sale Catalogue',
+		description: sale
+			? `Explore ${sale.title} lots, dates, and listing details in the public sale catalogue.`
+			: 'Explore vehicle lots and details in this public sale catalogue.',
+		canonicalPath: saleId ? `/sales/${saleId}` : '/sales',
+		noIndex: !sale && !isLoading && !isError,
+	});
 
 	if (isLoading) {
 		return <Loading message="Loading catalogue…" />;

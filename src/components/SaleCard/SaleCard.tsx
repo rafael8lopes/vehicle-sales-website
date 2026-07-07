@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { MapPin, Calendar, Gavel, Car, ChevronRight } from 'lucide-react';
 import clsx from 'clsx';
 
+import { LocationTypeIcon } from '@/components/LocationTypeIcon/LocationTypeIcon';
 import type { PublicSale } from '@/features/sales/types';
 import { formatSaleDateRange } from '@/utils/formatDate';
 import { getCountryFlag } from '@/utils/country';
-import { getLocationTypeLabel, getLocationTypeIcon } from '@/utils/locationType';
+import { getLocationTypeLabel } from '@/utils/locationType';
 
 import '@/components/SaleCard/SaleCard.scss';
 
@@ -14,7 +15,6 @@ type SaleCardProps = {
 };
 
 export function SaleCard({ sale }: SaleCardProps) {
-	const LocationIcon = getLocationTypeIcon(sale.locationType);
 	const isLive = sale.state === 'live';
 	const dateRange = formatSaleDateRange(sale.startDateTime, sale.endDateTime);
 	const flag = getCountryFlag(sale.countryCode);
@@ -81,7 +81,7 @@ export function SaleCard({ sale }: SaleCardProps) {
 
 				<div className="sale-card__footer">
 					<div className="sale-card__meta-item">
-						<LocationIcon size={14} aria-hidden="true" />
+						<LocationTypeIcon locationType={sale.locationType} size={14} aria-hidden="true" />
 						<span>{getLocationTypeLabel(sale.locationType)}</span>
 					</div>
 

@@ -41,7 +41,7 @@ function buildAbsoluteUrl(path: string) {
 
 function setMetaTag(attribute: 'name' | 'property', key: string, content: string) {
 	const cacheKey = `${attribute}:${key}`;
-	let tag = metaTagCache.get(cacheKey);
+	let tag: HTMLMetaElement | null | undefined = metaTagCache.get(cacheKey);
 
 	if (!tag || !tag.isConnected) {
 		const selector = `meta[${attribute}="${key}"]`;

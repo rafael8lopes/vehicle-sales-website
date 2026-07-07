@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-import { Car, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import { useMemo } from 'react';
 
 import { formatCalendarDate } from '@/utils/formatDate';

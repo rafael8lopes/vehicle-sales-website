@@ -4,7 +4,7 @@
 
 ```
 yarn install
-npm run dev
+yarn run dev
 ```
 
 ## Full Tech Stack
@@ -28,6 +28,14 @@ npm run dev
 - Husky
 - lint-staged
 
+### Dependencies
+
+- react-router-dom → Routing
+- @tanstack/react-query → Server state
+- date-fns → Date formatting
+- lucide-react → Icons
+- clsx → Conditional classes
+
 ## Design Decisions
 
 ### Styling
@@ -38,10 +46,9 @@ Styling follows the BEM methodology with SCSS to provide maintainable, predictab
 
 Static JSON behind a service abstraction
 
-### Dependencies
+### Testing
 
-- react-router-dom → Routing
-- @tanstack/react-query → Server state
-- date-fns → Date formatting
-- lucide-react → Icons
-- clsx → Conditional classes
+Testing is split by layer:
+
+- Vitest and React Testing Library cover utilities, hooks, and components.
+- Playwright covers key user journeys end-to-end. External boundaries stay mocked with static fixtures and MSW-style service isolation so tests remain fast and deterministic.

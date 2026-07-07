@@ -1,4 +1,3 @@
-import { Filter } from 'lucide-react';
 import clsx from 'clsx';
 import { useMemo } from 'react';
 
