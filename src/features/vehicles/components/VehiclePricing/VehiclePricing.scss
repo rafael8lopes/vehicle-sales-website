@@ -10,7 +10,7 @@
 	&__block {
 		margin-bottom: $spacing-md;
 
-		&--buy-now {
+		&--buy-now:not(:first-child) {
 			padding-top: $spacing-sm;
 			border-top: 1px solid $color-border-light;
 		}

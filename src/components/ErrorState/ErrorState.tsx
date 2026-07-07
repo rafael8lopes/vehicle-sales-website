@@ -5,12 +5,14 @@ import '@/components/ErrorState/ErrorState.scss';
 type ErrorStateProps = {
 	title?: string;
 	message?: string;
+	retryText?: string;
 	onRetry?: () => void;
 };
 
 export function ErrorState({
 	title = 'Something went wrong',
 	message = 'We could not load the data. Please try again.',
+	retryText = 'Try again',
 	onRetry,
 }: ErrorStateProps) {
 	return (
@@ -20,7 +22,7 @@ export function ErrorState({
 			<p className="error-state__message">{message}</p>
 			{onRetry && (
 				<button className="error-state__retry" type="button" onClick={onRetry}>
-					Try again
+					{retryText}
 				</button>
 			)}
 		</div>
