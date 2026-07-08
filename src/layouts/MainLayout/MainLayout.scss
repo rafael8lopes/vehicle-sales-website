@@ -5,7 +5,7 @@
   &__nav {
     background-color: $color-surface;
     border-bottom: 1px solid $color-border-light;
-    height: $header-height;
+    min-height: $header-height;
     display: flex;
     align-items: center;
     position: sticky;
@@ -19,6 +19,11 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    padding-block: $spacing-sm;
+
+    @include respond-to(sm) {
+      padding-block: 0;
+    }
   }
 
   &__logo {
@@ -42,6 +47,20 @@
     gap: $spacing-sm;
     font-size: $font-size-sm;
     color: $color-text-secondary;
+
+    // Hide clock icon and date on mobile; show from sm breakpoint
+    svg,
+    time {
+      display: none;
+
+      @include respond-to(sm) {
+        display: revert;
+      }
+    }
+
+    time {
+      white-space: nowrap;
+    }
   }
 
   &__divider {

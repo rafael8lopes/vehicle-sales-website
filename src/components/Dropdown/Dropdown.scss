@@ -1,8 +1,8 @@
 @use '../../styles/variables' as *;
 
-.language-switcher {
+.dropdown {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   &__trigger {
@@ -28,12 +28,12 @@
     }
   }
 
-  &__flag {
+  &__icon {
     font-size: 1rem;
     line-height: 1;
   }
 
-  &__code {
+  &__trigger-label {
     letter-spacing: 0.02em;
   }
 
@@ -54,6 +54,11 @@
     border: 1px solid $color-border;
     border-radius: $border-radius-md;
     box-shadow: $shadow-card-hover;
+
+    &--left {
+      right: auto;
+      left: 0;
+    }
   }
 
   &__option {

@@ -24,14 +24,13 @@ export const formatSaleDateRange = (
 	}
 
 	const endDate = parseISO(endDateTime);
-	const startDay = format(startDate, 'd MMM yyyy', { locale });
 	const endDay = format(endDate, 'd MMM yyyy', { locale });
 
-	if (startDay === endDay) {
+	if (formattedStart === endDay) {
 		return `${formattedStart} · ${format(startDate, 'HH:mm')} — ${format(endDate, 'HH:mm')}`;
 	}
 
-	return `${format(startDate, 'd MMM', { locale })} — ${format(endDate, 'd MMM yyyy', { locale })}`;
+	return `${format(startDate, 'd MMM', { locale })} — ${endDay}`;
 };
 
 export const formatFullSaleDate = (dateString: string, language = 'en'): string => {

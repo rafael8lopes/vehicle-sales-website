@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import clsx from 'clsx';
 import { Car, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -95,7 +96,10 @@ export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
 						<button
 							key={url}
 							type="button"
-							className={`image-gallery__thumbnail ${index === activeIndex ? 'image-gallery__thumbnail--active' : ''}`}
+							className={clsx(
+							'image-gallery__thumbnail',
+							index === activeIndex && 'image-gallery__thumbnail--active',
+						)}
 							onClick={() => handleThumbnailClick(index)}
 							aria-label={t('imageGallery.viewImage', { number: index + 1 })}
 							role="listitem"
