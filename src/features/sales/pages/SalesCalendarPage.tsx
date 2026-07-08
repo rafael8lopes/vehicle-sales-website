@@ -4,6 +4,7 @@ import { ErrorState } from '@/components/ErrorState/ErrorState';
 import { EmptyState } from '@/components/EmptyState/EmptyState';
 import { Pagination } from '@/components/Pagination/Pagination';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SalesFilters } from '@/features/sales/components/SalesFilters';
 import { SalesGroup } from '@/features/sales/components/SalesGroup';
 import { usePublicSales } from '@/features/sales/hooks/usePublicSales';
@@ -15,10 +16,11 @@ import { useSeo } from '@/app/useSeo';
 import '@/features/sales/pages/SalesCalendarPage.scss';
 
 export function SalesCalendarPage() {
+	const { t } = useTranslation();
+
 	useSeo({
-		title: 'Public Sales Calendar',
-		description:
-			'Browse live and upcoming public vehicle auctions and filter by status, format, and country.',
+		title: t('seo.salesTitle'),
+		description: t('seo.salesDescription'),
 		canonicalPath: '/',
 	});
 
@@ -63,7 +65,7 @@ export function SalesCalendarPage() {
 		return (
 			<>
 				<SalesCalendarHeader />
-				<Loading message="Loading sales…" />
+				<Loading message={t('loading.sales')} />
 			</>
 		);
 	}
@@ -73,8 +75,8 @@ export function SalesCalendarPage() {
 			<>
 				<SalesCalendarHeader />
 				<ErrorState
-					title="Unable to load sales"
-					message="We couldn't load the sales calendar. Please try again."
+					title={t('error.salesTitle')}
+					message={t('error.salesMessage')}
 					onRetry={() => void refetch()}
 				/>
 			</>
@@ -94,19 +96,19 @@ export function SalesCalendarPage() {
 				<div className="sales-calendar__content">
 					{isEmpty ? (
 						<EmptyState
-							title="No sales found"
-							message="No sales match your current filters. Try adjusting your selection."
+							title={t('empty.salesTitle')}
+							message={t('empty.salesMessage')}
 						/>
 					) : (
 						<>
 							<SalesGroup
-								title="Happening Now"
+								title={t('salesCalendar.groupLive')}
 								count={paginatedLive.length}
 								sales={paginatedLive}
 								variant="live"
 							/>
 							<SalesGroup
-								title="Upcoming Sales"
+								title={t('salesCalendar.groupUpcoming')}
 								count={paginatedUpcoming.length}
 								sales={paginatedUpcoming}
 								variant="upcoming"
@@ -128,16 +130,20 @@ export function SalesCalendarPage() {
 }
 
 function SalesCalendarHeader() {
+	const { t } = useTranslation();
+
 	return (
 		<PageHeader
-			subtitle="Public Sale Calendar"
+			subtitle={t('salesCalendar.headerSubtitle')}
 			title={
 				<>
-					Upcoming &amp; Live<br />
-					<span className="sales-calendar__title-accent">Vehicle Sales</span>
+					{t('salesCalendar.headerTitleLead')}<br />
+					<span className="sales-calendar__title-accent">
+						{t('salesCalendar.headerTitleAccent')}
+					</span>
 				</>
 			}
-			description="Browse publicly listed auctions worldwide. Filter by status, sale format, or country to find the right event."
+			description={t('salesCalendar.headerDescription')}
 		/>
 	);
 }

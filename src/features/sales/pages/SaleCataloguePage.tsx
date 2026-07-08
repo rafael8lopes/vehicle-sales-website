@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { Gavel, Calendar, ArrowLeft } from 'lucide-react';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { Loading } from '@/components/Loading/Loading';
 import { ErrorState } from '@/components/ErrorState/ErrorState';
@@ -16,6 +17,7 @@ import { useSeo } from '@/app/useSeo';
 import '@/features/sales/pages/SaleCataloguePage.scss';
 
 export function SaleCataloguePage() {
+	const { t, i18n } = useTranslation();
 	const { saleId } = useParams<{ saleId: string }>();
 	const {
 		data: sale,
@@ -38,23 +40,23 @@ export function SaleCataloguePage() {
 	const isError = saleError || vehiclesError;
 
 	useSeo({
-		title: sale ? `${sale.title} Catalogue` : 'Sale Catalogue',
+		title: sale ? t('seo.catalogueTitle', { title: sale.title }) : t('seo.catalogueTitleFallback'),
 		description: sale
-			? `Explore ${sale.title} lots, dates, and listing details in the public sale catalogue.`
-			: 'Explore vehicle lots and details in this public sale catalogue.',
+			? t('seo.catalogueDescription', { title: sale.title })
+			: t('seo.catalogueDescriptionFallback'),
 		canonicalPath: saleId ? `/sales/${saleId}` : '/sales',
 		noIndex: !sale && !isLoading && !isError,
 	});
 
 	if (isLoading) {
-		return <Loading message="Loading catalogue…" />;
+		return <Loading message={t('loading.catalogue')} />;
 	}
 
 	if (isError) {
 		return (
 			<ErrorState
-				title="Unable to load catalogue"
-				message="We couldn't load the sale catalogue. Please try again."
+				title={t('error.catalogueTitle')}
+				message={t('error.catalogueMessage')}
 				onRetry={() => {
 					void refetchSale();
 					void refetchVehicles();
@@ -76,18 +78,22 @@ export function SaleCataloguePage() {
 					<div className="sale-catalogue__summary">
 						<div className="sale-catalogue__lot-count">
 							<Gavel size={16} aria-hidden="true" />
-							<strong>{vehicles.length}</strong> lots in this sale
+							<Trans
+								i18nKey="saleCatalogue.lotsInSale"
+								values={{ count: vehicles.length }}
+								components={{ strong: <strong /> }}
+							/>
 						</div>
 						<div className="sale-catalogue__date-range">
 							<Calendar size={16} aria-hidden="true" />
-							{formatSaleDateRange(sale.startDateTime, sale.endDateTime)}
+							{formatSaleDateRange(sale.startDateTime, sale.endDateTime, i18n.language)}
 						</div>
 					</div>
 
 					{vehicles.length === 0 ? (
 						<EmptyState
-							title="No vehicles available"
-							message="This sale has no vehicle lots listed yet. Check back closer to the sale date."
+							title={t('empty.vehiclesTitle')}
+							message={t('empty.vehiclesMessage')}
 						/>
 					) : (
 						<>
@@ -109,15 +115,17 @@ export function SaleCataloguePage() {
 }
 
 function SaleNotFound() {
+	const { t } = useTranslation();
+
 	return (
 		<div className="sale-not-found">
-			<h1 className="sale-not-found__title">Sale not found</h1>
+			<h1 className="sale-not-found__title">{t('saleCatalogue.notFoundTitle')}</h1>
 			<p className="sale-not-found__message">
-				This sale does not exist or is not publicly available.
+				{t('saleCatalogue.notFoundMessage')}
 			</p>
 			<Link to="/" className="sale-not-found__link">
 				<ArrowLeft size={16} aria-hidden="true" />
-				Back to all sales
+				{t('common.backToAllSales')}
 			</Link>
 		</div>
 	);

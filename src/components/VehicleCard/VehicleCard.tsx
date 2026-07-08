@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Car, Gauge, Fuel, Cog, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import type { VehicleLot } from '@/features/vehicles/types';
 import { formatMileage } from '@/utils/formatMileage';
+import { getIntlLocale } from '@/i18n/locale';
 
 import '@/components/VehicleCard/VehicleCard.scss';
 
@@ -13,10 +15,12 @@ type VehicleCardProps = {
 };
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
+	const { t, i18n } = useTranslation();
 	const hasImage = vehicle.imageUrls && vehicle.imageUrls.length > 0;
 	const [imageError, setImageError] = useState(false);
 	const gradeClass = vehicle.grade ? `vehicle-card__grade-badge--${vehicle.grade.toLowerCase()}` : '';
 	const showPlaceholder = !hasImage || imageError;
+	const intlLocale = getIntlLocale(i18n.language);
 
 	return (
 		<article className="vehicle-card">
@@ -36,10 +40,10 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 				)}
 
 				<div className="vehicle-card__badges">
-					<span className="vehicle-card__lot-badge">Lot {vehicle.lotNumber}</span>
+					<span className="vehicle-card__lot-badge">{t('common.lot', { number: vehicle.lotNumber })}</span>
 					{vehicle.grade && (
 						<span className={clsx('vehicle-card__grade-badge', gradeClass)}>
-							Grade {vehicle.grade}
+							{t('common.grade', { grade: vehicle.grade })}
 						</span>
 					)}
 				</div>
@@ -62,7 +66,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 					{vehicle.mileage != null && (
 						<span className="vehicle-card__spec">
 							<Gauge size={12} aria-hidden="true" />
-							{formatMileage(vehicle.mileage, vehicle.mileageUnit)}
+							{formatMileage(vehicle.mileage, vehicle.mileageUnit, intlLocale)}
 						</span>
 					)}
 					{vehicle.fuelType && (
@@ -91,9 +95,11 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 					<Link
 						to={`/vehicles/${vehicle.id}`}
 						className="vehicle-card__cta"
-						aria-label={`View details for ${vehicle.make} ${vehicle.model}`}
+						aria-label={t('vehicleCard.viewDetailsFor', {
+							title: `${vehicle.make} ${vehicle.model}`,
+						})}
 					>
-						View Details <ChevronRight size={16} aria-hidden="true" />
+						{t('common.viewDetails')} <ChevronRight size={16} aria-hidden="true" />
 					</Link>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import type { PublicSale, SaleFilters, SaleLocationType, SaleState } from '@/features/sales/types';
 import { getUniqueCountries } from '@/utils/filterPublicSales';
@@ -13,27 +14,13 @@ type SalesFiltersProps = {
 	onFilterChange: (filters: SaleFilters) => void;
 };
 
-type StateOption = {
-	value: SaleState | 'all';
-	label: string;
-};
+const STATE_OPTIONS: (SaleState | 'all')[] = ['all', 'live', 'upcoming'];
 
-type LocationTypeOption = {
-	value: SaleLocationType | 'all';
-	label: string;
-};
-
-const STATE_OPTIONS: StateOption[] = [
-	{ value: 'all', label: 'All' },
-	{ value: 'live', label: 'Live' },
-	{ value: 'upcoming', label: 'Upcoming' },
-];
-
-const LOCATION_TYPE_OPTIONS: LocationTypeOption[] = [
-	{ value: 'all', label: 'Any Format' },
-	{ value: 'online', label: 'Online' },
-	{ value: 'in-person', label: 'In Person' },
-	{ value: 'hybrid', label: 'Hybrid' },
+const LOCATION_TYPE_OPTIONS: (SaleLocationType | 'all')[] = [
+	'all',
+	'online',
+	'in-person',
+	'hybrid',
 ];
 
 const getStateCounts = (sales: PublicSale[]): Record<string, number> => {
@@ -47,8 +34,15 @@ const getStateCounts = (sales: PublicSale[]): Record<string, number> => {
 };
 
 export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersProps) {
+	const { t } = useTranslation();
 	const stateCounts = useMemo(() => getStateCounts(sales), [sales]);
 	const countries = useMemo(() => getUniqueCountries(sales), [sales]);
+
+	const getStateLabel = (value: SaleState | 'all'): string =>
+		value === 'all' ? t('salesFilters.all') : t(`salesFilters.${value}`);
+
+	const getLocationTypeOptionLabel = (value: SaleLocationType | 'all'): string =>
+		value === 'all' ? t('salesFilters.anyFormat') : t(`locationType.${value}`);
 
 	const handleStateChange = (state: SaleState | 'all') => {
 		onFilterChange({ ...filters, state });
@@ -63,10 +57,10 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 	};
 
 	return (
-		<div className="sales-filters" role="search" aria-label="Sale filters">
+		<div className="sales-filters" role="search" aria-label={t('salesFilters.searchLabel')}>
 			<div className="sales-filters__inner">
-				<div className="sales-filters__group" role="group" aria-label="Filter by status">
-					{STATE_OPTIONS.map(({ value, label }) => {
+				<div className="sales-filters__group" role="group" aria-label={t('salesFilters.filterByStatus')}>
+					{STATE_OPTIONS.map((value) => {
 						const count = stateCounts[value];
 
 						return (
@@ -80,7 +74,7 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 								onClick={() => handleStateChange(value)}
 								aria-pressed={filters.state === value}
 							>
-								{label}
+								{getStateLabel(value)}
 								{count !== undefined && (
 									<span className="sales-filters__chip-count">{count}</span>
 								)}
@@ -91,8 +85,8 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 
 				<span className="sales-filters__divider" aria-hidden="true" />
 
-				<div className="sales-filters__group" role="group" aria-label="Filter by format">
-					{LOCATION_TYPE_OPTIONS.map(({ value, label }) => (
+				<div className="sales-filters__group" role="group" aria-label={t('salesFilters.filterByFormat')}>
+					{LOCATION_TYPE_OPTIONS.map((value) => (
 						<button
 							key={value}
 							type="button"
@@ -103,7 +97,7 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 							onClick={() => handleLocationTypeChange(value)}
 							aria-pressed={filters.locationType === value}
 						>
-							{label}
+							{getLocationTypeOptionLabel(value)}
 						</button>
 					))}
 				</div>
@@ -112,7 +106,7 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 
 				<div className="sales-filters__select-wrapper">
 					<label htmlFor="country-filter" className="sales-filters__select-label">
-						Country
+						{t('salesFilters.country')}
 					</label>
 					<select
 						id="country-filter"
@@ -120,10 +114,10 @@ export function SalesFilters({ filters, sales, onFilterChange }: SalesFiltersPro
 						value={filters.country}
 						onChange={handleCountryChange}
 					>
-						<option value="all">All Countries</option>
+						<option value="all">{t('salesFilters.allCountries')}</option>
 						{countries.map((code) => (
 							<option key={code} value={code}>
-								{getCountryLabel(code)}
+								{getCountryLabel(code, t)}
 							</option>
 						))}
 					</select>

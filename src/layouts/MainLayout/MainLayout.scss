@@ -43,4 +43,12 @@
     font-size: $font-size-sm;
     color: $color-text-secondary;
   }
+
+  &__divider {
+    display: block;
+    width: 1px;
+    height: 1.25rem;
+    background-color: $color-border;
+    margin: 0 $spacing-xs;
+  }
 }

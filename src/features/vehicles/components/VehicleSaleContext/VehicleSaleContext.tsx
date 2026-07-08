@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { LocationTypeIcon } from '@/components/LocationTypeIcon/LocationTypeIcon';
 import type { PublicSale } from '@/features/sales/types';
@@ -14,15 +15,16 @@ type VehicleSaleContextProps = {
 };
 
 export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
+	const { t, i18n } = useTranslation();
 	const flag = getCountryFlag(sale.countryCode);
 	const locationLabel = sale.location
 		? `${flag} ${sale.location}`
-		: `${flag} ${getCountryName(sale.countryCode)}`;
+		: `${flag} ${getCountryName(sale.countryCode, t)}`;
 
 	return (
-		<aside className="vehicle-sale-context" aria-label="Sale information">
+		<aside className="vehicle-sale-context" aria-label={t('vehicleSaleContext.ariaLabel')}>
 			<div className="vehicle-sale-context__header">
-				<span className="vehicle-sale-context__label">Part of</span>
+				<span className="vehicle-sale-context__label">{t('vehicleSaleContext.partOf')}</span>
 				<h3 className="vehicle-sale-context__title">{sale.title}</h3>
 			</div>
 
@@ -33,20 +35,20 @@ export function VehicleSaleContext({ sale }: VehicleSaleContextProps) {
 				</div>
 				<div className="vehicle-sale-context__detail">
 					<LocationTypeIcon locationType={sale.locationType} size={14} aria-hidden="true" />
-					<span>{getLocationTypeLabel(sale.locationType)}</span>
+					<span>{getLocationTypeLabel(sale.locationType, t)}</span>
 				</div>
 				<div className="vehicle-sale-context__detail">
 					<Calendar size={14} aria-hidden="true" />
-					<span>{formatSaleDateRange(sale.startDateTime, sale.endDateTime)}</span>
+					<span>{formatSaleDateRange(sale.startDateTime, sale.endDateTime, i18n.language)}</span>
 				</div>
 			</div>
 
 			<Link
 				to={`/sales/${sale.id}`}
 				className="vehicle-sale-context__link"
-				aria-label={`View full catalogue for ${sale.title}`}
+				aria-label={t('vehicleSaleContext.viewFullCatalogueFor', { title: sale.title })}
 			>
-				View Full Catalogue <ChevronRight size={16} aria-hidden="true" />
+				{t('common.viewFullCatalogue')} <ChevronRight size={16} aria-hidden="true" />
 			</Link>
 		</aside>
 	);

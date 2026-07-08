@@ -1,15 +1,4 @@
-const COUNTRY_NAMES: Record<string, string> = {
-	CH: 'Switzerland',
-	DE: 'Germany',
-	ES: 'Spain',
-	FR: 'France',
-	GB: 'United Kingdom',
-	IT: 'Italy',
-	JP: 'Japan',
-	NL: 'Netherlands',
-	PT: 'Portugal',
-	US: 'United States',
-};
+import type { TFunction } from 'i18next';
 
 const codePointToEmoji = (codePoint: number): string => String.fromCodePoint(codePoint);
 
@@ -29,13 +18,15 @@ export const getCountryFlag = (countryCode: string): string => {
 	return codePointToEmoji(first) + codePointToEmoji(second);
 };
 
-export const getCountryName = (countryCode: string): string => {
-	return COUNTRY_NAMES[countryCode.toUpperCase()] ?? countryCode;
+export const getCountryName = (countryCode: string, t: TFunction): string => {
+	const upper = countryCode.toUpperCase();
+
+	return t(`country.${upper}`, { defaultValue: upper });
 };
 
-export const getCountryLabel = (countryCode: string): string => {
+export const getCountryLabel = (countryCode: string, t: TFunction): string => {
 	const flag = getCountryFlag(countryCode);
-	const name = getCountryName(countryCode);
+	const name = getCountryName(countryCode, t);
 
 	return flag ? `${flag} ${name}` : name;
 };

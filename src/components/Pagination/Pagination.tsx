@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Trans, useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import '@/components/Pagination/Pagination.scss';
@@ -38,19 +39,24 @@ export function Pagination({
 	onPageChange,
 	onPageSizeChange,
 }: PaginationProps) {
+	const { t } = useTranslation();
 	const startItem = (page - 1) * pageSize + 1;
 	const endItem = Math.min(page * pageSize, totalItems);
 	const visiblePages = getVisiblePages(page, totalPages);
 
 	return (
-		<nav className="pagination" aria-label="Pagination">
+		<nav className="pagination" aria-label={t('pagination.label')}>
 			<p className="pagination__summary">
-				Showing <strong>{startItem}–{endItem}</strong> of <strong>{totalItems}</strong> lots
+				<Trans
+					i18nKey="pagination.summary"
+					values={{ range: `${startItem}–${endItem}`, total: totalItems }}
+					components={{ strong: <strong /> }}
+				/>
 			</p>
 
 			<div className="pagination__controls">
 				<div className="pagination__page-size">
-					<label htmlFor="page-size-select">Show</label>
+					<label htmlFor="page-size-select">{t('pagination.show')}</label>
 					<select
 						id="page-size-select"
 						value={pageSize}
@@ -58,19 +64,19 @@ export function Pagination({
 					>
 						{PAGE_SIZE_OPTIONS.map((size) => (
 							<option key={size} value={size}>
-								{size} per page
+								{t('pagination.perPage', { count: size })}
 							</option>
 						))}
 					</select>
 				</div>
 
-				<div className="pagination__pages" role="group" aria-label="Page navigation">
+				<div className="pagination__pages" role="group" aria-label={t('pagination.pageNavigation')}>
 					<button
 						className="pagination__nav"
 						type="button"
 						onClick={() => onPageChange(page - 1)}
 						disabled={page <= 1}
-						aria-label="Previous page"
+						aria-label={t('pagination.previousPage')}
 					>
 						<ChevronLeft size={16} />
 					</button>
@@ -87,7 +93,7 @@ export function Pagination({
 								type="button"
 								onClick={() => onPageChange(pageNum)}
 								aria-current={page === pageNum ? 'page' : undefined}
-								aria-label={`Page ${pageNum}`}
+								aria-label={t('pagination.page', { page: pageNum })}
 							>
 								{pageNum}
 							</button>
@@ -99,7 +105,7 @@ export function Pagination({
 						type="button"
 						onClick={() => onPageChange(page + 1)}
 						disabled={page >= totalPages}
-						aria-label="Next page"
+						aria-label={t('pagination.nextPage')}
 					>
 						<ChevronRight size={16} />
 					</button>

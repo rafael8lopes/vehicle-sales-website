@@ -1,0 +1,178 @@
+{
+	"common": {
+		"lot": "Lote {{number}}",
+		"grade": "Estado {{grade}}",
+		"allSales": "Todas as vendas",
+		"backToAllSales": "Voltar a todas as vendas",
+		"viewCatalogue": "Ver catálogo",
+		"viewDetails": "Ver detalhes",
+		"viewFullCatalogue": "Ver catálogo completo"
+	},
+	"loading": {
+		"default": "A carregar…",
+		"sales": "A carregar vendas…",
+		"catalogue": "A carregar catálogo…",
+		"vehicle": "A carregar detalhes do veículo…"
+	},
+	"error": {
+		"title": "Ocorreu um erro",
+		"message": "Não foi possível carregar os dados. Tente novamente.",
+		"retry": "Tentar novamente",
+		"salesTitle": "Não foi possível carregar as vendas",
+		"salesMessage": "Não foi possível carregar o calendário de vendas. Tente novamente.",
+		"catalogueTitle": "Não foi possível carregar o catálogo",
+		"catalogueMessage": "Não foi possível carregar o catálogo da venda. Tente novamente.",
+		"vehicleTitle": "Não foi possível carregar o veículo",
+		"vehicleMessage": "Não foi possível carregar os detalhes do veículo. Tente novamente."
+	},
+	"empty": {
+		"title": "Nenhum resultado encontrado",
+		"message": "Ajuste os filtros para encontrar o que procura.",
+		"salesTitle": "Nenhuma venda encontrada",
+		"salesMessage": "Nenhuma venda corresponde aos filtros atuais. Ajuste a sua seleção.",
+		"vehiclesTitle": "Nenhum veículo disponível",
+		"vehiclesMessage": "Esta venda ainda não tem lotes de veículos listados. Volte mais perto da data da venda."
+	},
+	"pagination": {
+		"summary": "A mostrar <strong>{{range}}</strong> de <strong>{{total}}</strong> lotes",
+		"show": "Mostrar",
+		"perPage": "{{count}} por página",
+		"previousPage": "Página anterior",
+		"nextPage": "Página seguinte",
+		"page": "Página {{page}}",
+		"pageNavigation": "Navegação de páginas",
+		"label": "Paginação"
+	},
+	"saleCard": {
+		"live": "AO VIVO",
+		"upcoming": "EM BREVE",
+		"featured": "DESTAQUE",
+		"lots": "{{count}} lotes",
+		"viewCatalogueFor": "Ver catálogo de {{title}}"
+	},
+	"vehicleCard": {
+		"viewDetailsFor": "Ver detalhes de {{title}}"
+	},
+	"salesCalendar": {
+		"headerSubtitle": "Calendário de vendas públicas",
+		"headerTitleLead": "Vendas em breve e ao vivo",
+		"headerTitleAccent": "de veículos",
+		"headerDescription": "Explore leilões públicos em todo o mundo. Filtre por estado, formato de venda ou país para encontrar o evento certo.",
+		"groupLive": "A decorrer agora",
+		"groupUpcoming": "Próximas vendas"
+	},
+	"saleCatalogue": {
+		"lotsInSale": "<strong>{{count}}</strong> lotes nesta venda",
+		"notFoundTitle": "Venda não encontrada",
+		"notFoundMessage": "Esta venda não existe ou não está disponível publicamente."
+	},
+	"notFoundPage": {
+		"title": "Página não encontrada",
+		"message": "A página que procura não existe."
+	},
+	"vehicleDetail": {
+		"notFoundTitle": "Veículo não encontrado",
+		"notFoundMessage": "Este veículo não existe ou não está disponível publicamente.",
+		"breadcrumb": "Navegação estrutural",
+		"backToSale": "Voltar a {{title}}"
+	},
+	"grade": {
+		"A": "Excelente",
+		"B": "Bom",
+		"C": "Razoável",
+		"D": "Fraco"
+	},
+	"salesFilters": {
+		"all": "Todos",
+		"live": "Ao vivo",
+		"upcoming": "Em breve",
+		"anyFormat": "Qualquer formato",
+		"country": "País",
+		"allCountries": "Todos os países",
+		"searchLabel": "Filtros de venda",
+		"filterByStatus": "Filtrar por estado",
+		"filterByFormat": "Filtrar por formato"
+	},
+	"saleHeader": {
+		"location": "Localização",
+		"format": "Formato",
+		"opens": "Abre",
+		"totalLots": "Total de lotes"
+	},
+	"salesGroup": {
+		"saleCount_one": "{{count}} venda",
+		"saleCount_other": "{{count}} vendas"
+	},
+	"imageGallery": {
+		"previousImage": "Imagem anterior",
+		"nextImage": "Imagem seguinte",
+		"viewImage": "Ver imagem {{number}}",
+		"imageAlt": "{{alt}} — imagem {{current}} de {{total}}"
+	},
+	"vehiclePricing": {
+		"startingEstimate": "Estimativa inicial",
+		"buyNow": "Comprar já",
+		"disclaimer": "Os preços não incluem a comissão do comprador nem os impostos aplicáveis."
+	},
+	"vehicleSpec": {
+		"title": "Especificação",
+		"tableLabel": "Especificação do veículo",
+		"year": "Ano",
+		"make": "Marca",
+		"model": "Modelo",
+		"derivative": "Versão",
+		"bodyType": "Tipo de carroçaria",
+		"colour": "Cor",
+		"fuelType": "Combustível",
+		"transmission": "Transmissão",
+		"odometer": "Quilometragem",
+		"yes": "Sim"
+	},
+	"vehicleEquipment": {
+		"title": "Equipamento de destaque"
+	},
+	"vehicleSaleContext": {
+		"ariaLabel": "Informação da venda",
+		"partOf": "Parte de",
+		"viewFullCatalogueFor": "Ver catálogo completo de {{title}}"
+	},
+	"layout": {
+		"brand": "AutoAuction",
+		"home": "Página inicial AutoAuction",
+		"live": "{{count}} ao vivo",
+		"upcoming": "{{count}} em breve",
+		"mainNavigation": "Navegação principal",
+		"saleStatistics": "Estatísticas de vendas",
+		"language": "Idioma"
+	},
+	"locationType": {
+		"online": "Online",
+		"in-person": "Presencial",
+		"hybrid": "Híbrido"
+	},
+	"country": {
+		"CH": "Suíça",
+		"DE": "Alemanha",
+		"ES": "Espanha",
+		"FR": "França",
+		"GB": "Reino Unido",
+		"IT": "Itália",
+		"JP": "Japão",
+		"NL": "Países Baixos",
+		"PT": "Portugal",
+		"US": "Estados Unidos"
+	},
+	"seo": {
+		"salesTitle": "Calendário de vendas públicas",
+		"salesDescription": "Explore leilões públicos de veículos ao vivo e futuros e filtre por estado, formato e país.",
+		"catalogueTitle": "Catálogo {{title}}",
+		"catalogueTitleFallback": "Catálogo da venda",
+		"catalogueDescription": "Explore os lotes, datas e detalhes de {{title}} no catálogo público da venda.",
+		"catalogueDescriptionFallback": "Explore os lotes de veículos e detalhes neste catálogo público de venda.",
+		"vehicleTitleFallback": "Detalhes do veículo",
+		"vehicleDescription": "Veja o lote {{lot}}, preços, especificações e contexto da venda de {{title}}.",
+		"vehicleDescriptionFallback": "Veja as especificações detalhadas do lote, preços e contexto da venda deste veículo.",
+		"notFoundTitle": "Página não encontrada",
+		"notFoundDescription": "A página solicitada não existe na AutoAuction."
+	}
+}

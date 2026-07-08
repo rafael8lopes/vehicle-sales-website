@@ -1,7 +1,9 @@
 import { format, parseISO } from 'date-fns';
 
-export const formatSaleDate = (dateString: string): string => {
-	return format(parseISO(dateString), 'd MMM yyyy');
+import { getDateFnsLocale } from '@/i18n/locale';
+
+export const formatSaleDate = (dateString: string, language = 'en'): string => {
+	return format(parseISO(dateString), 'd MMM yyyy', { locale: getDateFnsLocale(language) });
 };
 
 export const formatSaleTime = (dateString: string): string => {
@@ -11,29 +13,31 @@ export const formatSaleTime = (dateString: string): string => {
 export const formatSaleDateRange = (
 	startDateTime: string,
 	endDateTime?: string,
+	language = 'en',
 ): string => {
+	const locale = getDateFnsLocale(language);
 	const startDate = parseISO(startDateTime);
-	const formattedStart = format(startDate, 'd MMM yyyy');
+	const formattedStart = format(startDate, 'd MMM yyyy', { locale });
 
 	if (!endDateTime) {
 		return formattedStart;
 	}
 
 	const endDate = parseISO(endDateTime);
-	const startDay = format(startDate, 'd MMM yyyy');
-	const endDay = format(endDate, 'd MMM yyyy');
+	const startDay = format(startDate, 'd MMM yyyy', { locale });
+	const endDay = format(endDate, 'd MMM yyyy', { locale });
 
 	if (startDay === endDay) {
 		return `${formattedStart} · ${format(startDate, 'HH:mm')} — ${format(endDate, 'HH:mm')}`;
 	}
 
-	return `${format(startDate, 'd MMM')} — ${format(endDate, 'd MMM yyyy')}`;
+	return `${format(startDate, 'd MMM', { locale })} — ${format(endDate, 'd MMM yyyy', { locale })}`;
 };
 
-export const formatFullSaleDate = (dateString: string): string => {
-	return format(parseISO(dateString), 'd MMMM yyyy');
+export const formatFullSaleDate = (dateString: string, language = 'en'): string => {
+	return format(parseISO(dateString), 'd MMMM yyyy', { locale: getDateFnsLocale(language) });
 };
 
-export const formatCalendarDate = (date: Date = new Date()): string => {
-	return format(date, 'd MMM yyyy');
+export const formatCalendarDate = (date: Date = new Date(), language = 'en'): string => {
+	return format(date, 'd MMM yyyy', { locale: getDateFnsLocale(language) });
 };

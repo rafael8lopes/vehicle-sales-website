@@ -1,6 +1,8 @@
 import { Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { formatPrice } from '@/utils/formatPrice';
+import { getIntlLocale } from '@/i18n/locale';
 
 import '@/features/vehicles/components/VehiclePricing/VehiclePricing.scss';
 
@@ -11,7 +13,9 @@ type VehiclePricingProps = {
 };
 
 export function VehiclePricing({ currentPrice, buyNowPrice, currency = 'GBP' }: VehiclePricingProps) {
+	const { t, i18n } = useTranslation();
 	const hasPrice = currentPrice != null || buyNowPrice != null;
+	const intlLocale = getIntlLocale(i18n.language);
 
 	if (!hasPrice) return null;
 
@@ -19,9 +23,9 @@ export function VehiclePricing({ currentPrice, buyNowPrice, currency = 'GBP' }: 
 		<div className="vehicle-pricing">
 			{currentPrice != null && (
 				<div className="vehicle-pricing__block">
-					<span className="vehicle-pricing__label">Starting Estimate</span>
+					<span className="vehicle-pricing__label">{t('vehiclePricing.startingEstimate')}</span>
 					<span className="vehicle-pricing__amount">
-						{formatPrice(currentPrice, currency)}
+						{formatPrice(currentPrice, currency, intlLocale)}
 						<span className="vehicle-pricing__currency">{currency}</span>
 					</span>
 				</div>
@@ -29,16 +33,16 @@ export function VehiclePricing({ currentPrice, buyNowPrice, currency = 'GBP' }: 
 
 			{buyNowPrice != null && (
 				<div className="vehicle-pricing__block vehicle-pricing__block--buy-now">
-					<span className="vehicle-pricing__label">Buy Now</span>
+					<span className="vehicle-pricing__label">{t('vehiclePricing.buyNow')}</span>
 					<span className="vehicle-pricing__amount vehicle-pricing__amount--buy-now">
 						<Zap size={16} aria-hidden="true" />
-						{formatPrice(buyNowPrice, currency)}
+						{formatPrice(buyNowPrice, currency, intlLocale)}
 					</span>
 				</div>
 			)}
 
 			<p className="vehicle-pricing__disclaimer">
-				Prices exclude buyer&apos;s premium and applicable taxes.
+				{t('vehiclePricing.disclaimer')}
 			</p>
 		</div>
 	);

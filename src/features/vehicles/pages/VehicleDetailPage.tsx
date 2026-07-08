@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import { Loading } from '@/components/Loading/Loading';
@@ -16,6 +17,7 @@ import { useSeo } from '@/app/useSeo';
 import '@/features/vehicles/pages/VehicleDetailPage.scss';
 
 export function VehicleDetailPage() {
+	const { t } = useTranslation();
 	const { vehicleId } = useParams<{ vehicleId: string }>();
 	const {
 		data: vehicle,
@@ -31,23 +33,26 @@ export function VehicleDetailPage() {
 	const isLoading = vehicleLoading || (vehicle && saleLoading);
 
 	useSeo({
-		title: vehicle ? `${vehicle.make} ${vehicle.model}` : 'Vehicle Details',
+		title: vehicle ? `${vehicle.make} ${vehicle.model}` : t('seo.vehicleTitleFallback'),
 		description: vehicle
-			? `View lot ${vehicle.lotNumber}, pricing, specifications, and sale context for ${vehicle.make} ${vehicle.model}.`
-			: 'View detailed lot specifications, pricing, and sale context for this vehicle.',
+			? t('seo.vehicleDescription', {
+					lot: vehicle.lotNumber,
+					title: `${vehicle.make} ${vehicle.model}`,
+				})
+			: t('seo.vehicleDescriptionFallback'),
 		canonicalPath: vehicleId ? `/vehicles/${vehicleId}` : '/vehicles',
 		noIndex: !vehicle && !isLoading && !vehicleError,
 	});
 
 	if (isLoading) {
-		return <Loading message="Loading vehicle details…" />;
+		return <Loading message={t('loading.vehicle')} />;
 	}
 
 	if (vehicleError) {
 		return (
 			<ErrorState
-				title="Unable to load vehicle"
-				message="We couldn't load the vehicle details. Please try again."
+				title={t('error.vehicleTitle')}
+				message={t('error.vehicleMessage')}
 				onRetry={() => void refetchVehicle()}
 			/>
 		);
@@ -58,15 +63,15 @@ export function VehicleDetailPage() {
 	}
 
 	const vehicleTitle = `${vehicle.make} ${vehicle.model}`;
-	const gradeLabel = vehicle.grade ? `Grade ${vehicle.grade}` : null;
+	const gradeLabel = vehicle.grade ? t('common.grade', { grade: vehicle.grade }) : null;
 	const gradeClass = vehicle.grade ? `vehicle-detail__grade--${vehicle.grade.toLowerCase()}` : '';
 
 	return (
 		<>
-			<nav className="vehicle-detail__breadcrumb" aria-label="Breadcrumb">
+			<nav className="vehicle-detail__breadcrumb" aria-label={t('vehicleDetail.breadcrumb')}>
 				<ol className="vehicle-detail__breadcrumb-list">
 					<li>
-						<Link to="/">All Sales</Link>
+						<Link to="/">{t('common.allSales')}</Link>
 					</li>
 					{sale && (
 						<li>
@@ -76,7 +81,7 @@ export function VehicleDetailPage() {
 					)}
 					<li aria-current="page">
 						<ChevronRight size={12} aria-hidden="true" />
-						<span>Lot {vehicle.lotNumber}</span>
+						<span>{t('common.lot', { number: vehicle.lotNumber })}</span>
 					</li>
 				</ol>
 			</nav>
@@ -85,7 +90,7 @@ export function VehicleDetailPage() {
 				<div className="vehicle-detail__back-link">
 					<Link to={`/sales/${sale.id}`} className="vehicle-detail__back">
 						<ArrowLeft size={16} aria-hidden="true" />
-						Back to {sale.title}
+						{t('vehicleDetail.backToSale', { title: sale.title })}
 					</Link>
 				</div>
 			)}
@@ -106,10 +111,10 @@ export function VehicleDetailPage() {
 					<div className="vehicle-detail__right">
 						<header className="vehicle-detail__header">
 							<div className="vehicle-detail__badges">
-								<span className="vehicle-detail__lot-badge">Lot {vehicle.lotNumber}</span>
+								<span className="vehicle-detail__lot-badge">{t('common.lot', { number: vehicle.lotNumber })}</span>
 								{gradeLabel && (
 									<span className={clsx('vehicle-detail__grade', gradeClass)}>
-										{gradeLabel} · {getGradeDescription(vehicle.grade!)}
+										{gradeLabel} · {t(`grade.${vehicle.grade}`, { defaultValue: String(vehicle.grade ?? '') })}
 									</span>
 								)}
 							</div>
@@ -145,27 +150,18 @@ export function VehicleDetailPage() {
 	);
 }
 
-function getGradeDescription(grade: string): string {
-	const descriptions: Record<string, string> = {
-		A: 'Excellent',
-		B: 'Good',
-		C: 'Fair',
-		D: 'Poor',
-	};
-
-	return descriptions[grade] ?? grade;
-}
-
 function VehicleNotFound() {
+	const { t } = useTranslation();
+
 	return (
 		<div className="vehicle-not-found">
-			<h1 className="vehicle-not-found__title">Vehicle not found</h1>
+			<h1 className="vehicle-not-found__title">{t('vehicleDetail.notFoundTitle')}</h1>
 			<p className="vehicle-not-found__message">
-				This vehicle does not exist or is not publicly available.
+				{t('vehicleDetail.notFoundMessage')}
 			</p>
 			<Link to="/" className="vehicle-not-found__link">
 				<ArrowLeft size={16} aria-hidden="true" />
-				Back to all sales
+				{t('common.backToAllSales')}
 			</Link>
 		</div>
 	);

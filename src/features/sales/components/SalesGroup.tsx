@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import type { PublicSale } from '@/features/sales/types';
 import { SaleCard } from '@/components/SaleCard/SaleCard';
 
@@ -11,6 +13,8 @@ type SalesGroupProps = {
 };
 
 export function SalesGroup({ title, count, sales, variant = 'upcoming' }: SalesGroupProps) {
+	const { t } = useTranslation();
+
 	if (sales.length === 0) {
 		return null;
 	}
@@ -22,7 +26,7 @@ export function SalesGroup({ title, count, sales, variant = 'upcoming' }: SalesG
 					<span className="sales-group__indicator" aria-hidden="true" />
 				)}
 				<h2 className="sales-group__title">
-					{title} — <span className="sales-group__count">{count} {count === 1 ? 'sale' : 'sales'}</span>
+					{title} — <span className="sales-group__count">{t('salesGroup.saleCount', { count })}</span>
 				</h2>
 			</div>
 

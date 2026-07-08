@@ -2,6 +2,7 @@
 import type { Preview } from '@storybook/react-vite';
 import { MemoryRouter } from 'react-router-dom';
 
+import '../src/app/i18n';
 import '../src/styles/globals.scss';
 
 const preview: Preview = {

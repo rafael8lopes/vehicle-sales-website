@@ -1,0 +1,178 @@
+{
+	"common": {
+		"lot": "Lot {{number}}",
+		"grade": "Grade {{grade}}",
+		"allSales": "All Sales",
+		"backToAllSales": "Back to all sales",
+		"viewCatalogue": "View Catalogue",
+		"viewDetails": "View Details",
+		"viewFullCatalogue": "View Full Catalogue"
+	},
+	"loading": {
+		"default": "Loading…",
+		"sales": "Loading sales…",
+		"catalogue": "Loading catalogue…",
+		"vehicle": "Loading vehicle details…"
+	},
+	"error": {
+		"title": "Something went wrong",
+		"message": "We could not load the data. Please try again.",
+		"retry": "Try again",
+		"salesTitle": "Unable to load sales",
+		"salesMessage": "We couldn't load the sales calendar. Please try again.",
+		"catalogueTitle": "Unable to load catalogue",
+		"catalogueMessage": "We couldn't load the sale catalogue. Please try again.",
+		"vehicleTitle": "Unable to load vehicle",
+		"vehicleMessage": "We couldn't load the vehicle details. Please try again."
+	},
+	"empty": {
+		"title": "No results found",
+		"message": "Try adjusting your filters to find what you are looking for.",
+		"salesTitle": "No sales found",
+		"salesMessage": "No sales match your current filters. Try adjusting your selection.",
+		"vehiclesTitle": "No vehicles available",
+		"vehiclesMessage": "This sale has no vehicle lots listed yet. Check back closer to the sale date."
+	},
+	"pagination": {
+		"summary": "Showing <strong>{{range}}</strong> of <strong>{{total}}</strong> lots",
+		"show": "Show",
+		"perPage": "{{count}} per page",
+		"previousPage": "Previous page",
+		"nextPage": "Next page",
+		"page": "Page {{page}}",
+		"pageNavigation": "Page navigation",
+		"label": "Pagination"
+	},
+	"saleCard": {
+		"live": "LIVE",
+		"upcoming": "UPCOMING",
+		"featured": "FEATURED",
+		"lots": "{{count}} lots",
+		"viewCatalogueFor": "View catalogue for {{title}}"
+	},
+	"vehicleCard": {
+		"viewDetailsFor": "View details for {{title}}"
+	},
+	"salesCalendar": {
+		"headerSubtitle": "Public Sale Calendar",
+		"headerTitleLead": "Upcoming & Live",
+		"headerTitleAccent": "Vehicle Sales",
+		"headerDescription": "Browse publicly listed auctions worldwide. Filter by status, sale format, or country to find the right event.",
+		"groupLive": "Happening Now",
+		"groupUpcoming": "Upcoming Sales"
+	},
+	"saleCatalogue": {
+		"lotsInSale": "<strong>{{count}}</strong> lots in this sale",
+		"notFoundTitle": "Sale not found",
+		"notFoundMessage": "This sale does not exist or is not publicly available."
+	},
+	"notFoundPage": {
+		"title": "Page not found",
+		"message": "The page you are looking for does not exist."
+	},
+	"vehicleDetail": {
+		"notFoundTitle": "Vehicle not found",
+		"notFoundMessage": "This vehicle does not exist or is not publicly available.",
+		"breadcrumb": "Breadcrumb",
+		"backToSale": "Back to {{title}}"
+	},
+	"grade": {
+		"A": "Excellent",
+		"B": "Good",
+		"C": "Fair",
+		"D": "Poor"
+	},
+	"salesFilters": {
+		"all": "All",
+		"live": "Live",
+		"upcoming": "Upcoming",
+		"anyFormat": "Any Format",
+		"country": "Country",
+		"allCountries": "All Countries",
+		"searchLabel": "Sale filters",
+		"filterByStatus": "Filter by status",
+		"filterByFormat": "Filter by format"
+	},
+	"saleHeader": {
+		"location": "Location",
+		"format": "Format",
+		"opens": "Opens",
+		"totalLots": "Total Lots"
+	},
+	"salesGroup": {
+		"saleCount_one": "{{count}} sale",
+		"saleCount_other": "{{count}} sales"
+	},
+	"imageGallery": {
+		"previousImage": "Previous image",
+		"nextImage": "Next image",
+		"viewImage": "View image {{number}}",
+		"imageAlt": "{{alt}} — image {{current}} of {{total}}"
+	},
+	"vehiclePricing": {
+		"startingEstimate": "Starting Estimate",
+		"buyNow": "Buy Now",
+		"disclaimer": "Prices exclude buyer's premium and applicable taxes."
+	},
+	"vehicleSpec": {
+		"title": "Specification",
+		"tableLabel": "Vehicle specification",
+		"year": "Year",
+		"make": "Make",
+		"model": "Model",
+		"derivative": "Derivative",
+		"bodyType": "Body Type",
+		"colour": "Colour",
+		"fuelType": "Fuel Type",
+		"transmission": "Transmission",
+		"odometer": "Odometer",
+		"yes": "Yes"
+	},
+	"vehicleEquipment": {
+		"title": "Notable Equipment"
+	},
+	"vehicleSaleContext": {
+		"ariaLabel": "Sale information",
+		"partOf": "Part of",
+		"viewFullCatalogueFor": "View full catalogue for {{title}}"
+	},
+	"layout": {
+		"brand": "AutoAuction",
+		"home": "AutoAuction home",
+		"live": "{{count}} live",
+		"upcoming": "{{count}} upcoming",
+		"mainNavigation": "Main navigation",
+		"saleStatistics": "Sale statistics",
+		"language": "Language"
+	},
+	"locationType": {
+		"online": "Online",
+		"in-person": "In Person",
+		"hybrid": "Hybrid"
+	},
+	"country": {
+		"CH": "Switzerland",
+		"DE": "Germany",
+		"ES": "Spain",
+		"FR": "France",
+		"GB": "United Kingdom",
+		"IT": "Italy",
+		"JP": "Japan",
+		"NL": "Netherlands",
+		"PT": "Portugal",
+		"US": "United States"
+	},
+	"seo": {
+		"salesTitle": "Public Sales Calendar",
+		"salesDescription": "Browse live and upcoming public vehicle auctions and filter by status, format, and country.",
+		"catalogueTitle": "{{title}} Catalogue",
+		"catalogueTitleFallback": "Sale Catalogue",
+		"catalogueDescription": "Explore {{title}} lots, dates, and listing details in the public sale catalogue.",
+		"catalogueDescriptionFallback": "Explore vehicle lots and details in this public sale catalogue.",
+		"vehicleTitleFallback": "Vehicle Details",
+		"vehicleDescription": "View lot {{lot}}, pricing, specifications, and sale context for {{title}}.",
+		"vehicleDescriptionFallback": "View detailed lot specifications, pricing, and sale context for this vehicle.",
+		"notFoundTitle": "Page Not Found",
+		"notFoundDescription": "The requested page does not exist on AutoAuction."
+	}
+}

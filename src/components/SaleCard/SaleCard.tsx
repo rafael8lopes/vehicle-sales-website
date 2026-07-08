@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, Gavel, Car, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
 
 import { LocationTypeIcon } from '@/components/LocationTypeIcon/LocationTypeIcon';
@@ -15,8 +16,9 @@ type SaleCardProps = {
 };
 
 export function SaleCard({ sale }: SaleCardProps) {
+	const { t, i18n } = useTranslation();
 	const isLive = sale.state === 'live';
-	const dateRange = formatSaleDateRange(sale.startDateTime, sale.endDateTime);
+	const dateRange = formatSaleDateRange(sale.startDateTime, sale.endDateTime, i18n.language);
 	const flag = getCountryFlag(sale.countryCode);
 
 	return (
@@ -43,11 +45,11 @@ export function SaleCard({ sale }: SaleCardProps) {
 						)}
 					>
 						{isLive && <span className="sale-card__badge-dot" aria-hidden="true" />}
-						{isLive ? 'LIVE' : 'UPCOMING'}
+						{isLive ? t('saleCard.live') : t('saleCard.upcoming')}
 					</span>
 
 					{sale.featured && (
-						<span className="sale-card__badge sale-card__badge--featured">FEATURED</span>
+						<span className="sale-card__badge sale-card__badge--featured">{t('saleCard.featured')}</span>
 					)}
 				</div>
 			</div>
@@ -70,7 +72,7 @@ export function SaleCard({ sale }: SaleCardProps) {
 
 					<div className="sale-card__meta-item">
 						<Gavel size={14} aria-hidden="true" />
-						<span>{sale.lotCount} lots</span>
+						<span>{t('saleCard.lots', { count: sale.lotCount })}</span>
 					</div>
 				</div>
 
@@ -82,15 +84,15 @@ export function SaleCard({ sale }: SaleCardProps) {
 				<div className="sale-card__footer">
 					<div className="sale-card__meta-item">
 						<LocationTypeIcon locationType={sale.locationType} size={14} aria-hidden="true" />
-						<span>{getLocationTypeLabel(sale.locationType)}</span>
+						<span>{getLocationTypeLabel(sale.locationType, t)}</span>
 					</div>
 
 					<Link
 						to={`/sales/${sale.id}`}
 						className="sale-card__cta"
-						aria-label={`View catalogue for ${sale.title}`}
+						aria-label={t('saleCard.viewCatalogueFor', { title: sale.title })}
 					>
-						View Catalogue <ChevronRight size={16} aria-hidden="true" />
+						{t('common.viewCatalogue')} <ChevronRight size={16} aria-hidden="true" />
 					</Link>
 				</div>
 			</div>

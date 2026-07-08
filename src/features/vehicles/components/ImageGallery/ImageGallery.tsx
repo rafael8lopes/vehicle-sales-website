@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Car, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import '@/features/vehicles/components/ImageGallery/ImageGallery.scss';
 
@@ -9,6 +10,7 @@ type ImageGalleryProps = {
 };
 
 export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
+	const { t } = useTranslation();
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [errorIndexes, setErrorIndexes] = useState<Set<number>>(new Set());
 
@@ -53,7 +55,11 @@ export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
 					<img
 						className="image-gallery__image"
 						src={imageUrls[activeIndex]}
-						alt={`${alt} — image ${activeIndex + 1} of ${imageUrls.length}`}
+						alt={t('imageGallery.imageAlt', {
+							alt,
+							current: activeIndex + 1,
+							total: imageUrls.length,
+						})}
 						onError={() => handleImageError(activeIndex)}
 					/>
 				)}
@@ -64,7 +70,7 @@ export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
 							className="image-gallery__nav image-gallery__nav--prev"
 							type="button"
 							onClick={handlePrev}
-							aria-label="Previous image"
+							aria-label={t('imageGallery.previousImage')}
 						>
 							<ChevronLeft size={20} />
 						</button>
@@ -72,7 +78,7 @@ export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
 							className="image-gallery__nav image-gallery__nav--next"
 							type="button"
 							onClick={handleNext}
-							aria-label="Next image"
+							aria-label={t('imageGallery.nextImage')}
 						>
 							<ChevronRight size={20} />
 						</button>
@@ -91,7 +97,7 @@ export function ImageGallery({ imageUrls, alt }: ImageGalleryProps) {
 							type="button"
 							className={`image-gallery__thumbnail ${index === activeIndex ? 'image-gallery__thumbnail--active' : ''}`}
 							onClick={() => handleThumbnailClick(index)}
-							aria-label={`View image ${index + 1}`}
+							aria-label={t('imageGallery.viewImage', { number: index + 1 })}
 							role="listitem"
 						>
 							{errorIndexes.has(index) ? (

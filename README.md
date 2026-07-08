@@ -19,6 +19,8 @@ yarn run dev
 - date-fns
 - Lucide React
 - clsx
+- i18next
+- react-i18next
 - Vitest
 - React Testing Library
 - MSW
@@ -35,6 +37,7 @@ yarn run dev
 - date-fns → Date formatting
 - lucide-react → Icons
 - clsx → Conditional classes
+- i18next / react-i18next → Internationalization (EN + PT)
 
 ## Design Decisions
 
@@ -45,6 +48,17 @@ Styling follows the BEM methodology with SCSS to provide maintainable, predictab
 ### Mock Data
 
 Static JSON behind a service abstraction
+
+### Internationalization
+
+The app ships in English (`en`) and Portuguese (`pt`) using `i18next` + `react-i18next`.
+
+- Configuration lives in [`src/app/i18n.ts`](src/app/i18n.ts) and is initialized once at app entry (`src/main.tsx`).
+- Translations are stored per language in [`src/i18n/locales/en.json`](src/i18n/locales/en.json) and [`src/i18n/locales/pt.json`](src/i18n/locales/pt.json), organized by feature/domain namespaces.
+- The active language is auto-detected from `localStorage` then the browser, with `en` as the fallback, and can be changed via the language switcher in the header.
+- Locale-aware formatting is centralized in [`src/i18n/locale.ts`](src/i18n/locale.ts): date-fns locales for dates and BCP 47 locales for `Intl` currency/number formatting. Formatting utilities stay pure and receive the active locale from components.
+- Domain labels (countries, location types, vehicle grades) resolve through the translation function so no user-facing string is hardcoded in JSX.
+- `src/i18n/i18next.d.ts` augments i18next with the resource shape for type-safe keys.
 
 ### Testing
 
